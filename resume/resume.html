@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>罗健 简历 · AIGC 内容创作 / AI 内容运营</title>
+<style>
+  @font-face { font-family: "SC"; src: url(fonts/NotoSansSC.ttf); font-weight: 100 900; }
+  @font-face { font-family: "SerifSC"; src: url(fonts/NotoSerifSC.ttf); font-weight: 200 900; }
+  @font-face { font-family: "Caveat"; src: url(fonts/caveat.ttf); font-weight: 400 700; }
+  @font-face { font-family: "DM Mono", "SC"; src: url(fonts/dm-mono.ttf); }
+  @font-face { font-family: "Delius"; src: url(fonts/delius.ttf); }
+  :root { --blue: #3154E8; --ink: #2345CC; --paper: #F0EEDF; --orange: #ED662E; --text: #1E2430; --mute: #5B6475; }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 210mm; height: 297mm; }
+  body { font-family: "SC", sans-serif; color: var(--text); font-size: 9.4pt; line-height: 1.55; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { width: 210mm; height: 297mm; display: grid; grid-template-columns: 64mm 1fr; overflow: hidden; }
+
+  /* sidebar */
+  .side { background: var(--paper); padding: 13mm 7mm 10mm 9mm; display: flex; flex-direction: column; gap: 6.2mm; position: relative; }
+  .mark { font-family: "Caveat"; font-weight: 700; font-size: 46pt; color: var(--blue); line-height: .8; letter-spacing: -4px; transform: rotate(-7deg); display: inline-block; position: relative; }
+  .mark b { font-family: "SC"; font-weight: 700; color: var(--orange); font-size: 17pt; position: absolute; right: -16px; top: -6px; transform: rotate(7deg); }
+  .side h3 { font-family: "DM Mono", "SC"; font-weight: 400; font-size: 7.6pt; letter-spacing: .22em; color: var(--blue); border-bottom: 1.2px solid var(--blue); padding-bottom: 1.4mm; margin-bottom: 2.4mm; }
+  .side h3 span { color: var(--orange); margin-right: 5px; }
+  .contact > div:not(.qr) { display: grid; grid-template-columns: 11mm 1fr; font-size: 8.6pt; margin-bottom: 1.1mm; word-break: break-all; }
+  .contact em { font-style: normal; font-family: "DM Mono", "SC"; font-size: 7pt; color: var(--mute); letter-spacing: .08em; padding-top: 1px; }
+  .qr { display: flex; gap: 3mm; align-items: center; margin-top: 2.5mm; }
+  .qr img { flex: none; width: 19mm; height: 19mm; background: #fff; padding: 1.4mm; border-radius: 2mm; }
+  .qr p { font-size: 7.8pt; color: var(--mute); line-height: 1.45; }
+  .qr p a { color: var(--ink); font-weight: 600; text-decoration: none; font-size: 8.2pt; }
+  .skill { margin-bottom: 2.6mm; }
+  .skill b { display: block; font-size: 8.7pt; color: var(--ink); font-weight: 700; margin-bottom: .6mm; }
+  .tags { display: flex; flex-wrap: wrap; gap: 1.2mm; }
+  .tags span { font-size: 7.7pt; background: #fff; border: 1px solid #D9D6C2; border-radius: 10px; padding: .1mm 2.1mm; line-height: 1.6; }
+  .tags span.hot { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .skill p { font-size: 7.9pt; color: var(--mute); line-height: 1.5; margin-top: .8mm; }
+  .edu div { margin-bottom: 2.4mm; }
+  .edu b { font-size: 9pt; display: block; }
+  .edu p { font-size: 8pt; color: var(--mute); line-height: 1.45; }
+  .edu i { font-style: normal; font-family: "DM Mono", "SC"; font-size: 7.4pt; color: var(--orange); }
+  .side .foot { margin-top: auto; font-family: "Caveat"; font-size: 15pt; color: var(--blue); transform: rotate(-4deg); }
+
+  /* main */
+  .main { padding: 13mm 11mm 10mm 9mm; display: flex; flex-direction: column; }
+  .head { border-bottom: 2.4px solid var(--blue); padding-bottom: 3.6mm; margin-bottom: 4.6mm; position: relative; }
+  .head h1 { font-family: "SerifSC"; font-weight: 800; font-size: 31pt; letter-spacing: .12em; color: var(--text); line-height: 1.1; }
+  .head h1 small { font-family: "DM Mono", "SC"; font-weight: 400; font-size: 9pt; letter-spacing: .25em; color: var(--mute); margin-left: 3mm; vertical-align: middle; }
+  .head .role { margin-top: 2mm; display: flex; gap: 1.6mm; flex-wrap: wrap; }
+  .head .role span { background: var(--blue); color: #fff; font-weight: 600; font-size: 9pt; padding: .5mm 2.6mm; border-radius: 1.2mm; }
+  .head .role span.o { background: var(--orange); }
+  .head .now { position: absolute; right: 0; top: 1mm; text-align: right; font-family: "DM Mono", "SC"; font-size: 7.2pt; letter-spacing: .14em; color: var(--mute); line-height: 1.6; }
+  .head .now strong { display: block; font-family: "SC"; font-size: 9pt; letter-spacing: 0; color: var(--ink); }
+
+  h2 { font-size: 11.6pt; font-weight: 800; color: var(--ink); display: flex; align-items: center; gap: 2mm; margin: 0 0 2.2mm; }
+  h2::before { content: ""; width: 2.2mm; height: 2.2mm; background: var(--orange); border-radius: 50%; }
+  h2 small { font-family: "DM Mono", "SC"; font-weight: 400; font-size: 7.2pt; letter-spacing: .2em; color: #9AA1B0; margin-left: auto; }
+  section { margin-bottom: 4.2mm; }
+  .summary { font-size: 9.2pt; line-height: 1.7; }
+  .summary strong { color: var(--ink); }
+  .points { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6mm 4mm; margin-top: 2.2mm; }
+  .points div { border-left: 2.4px solid var(--blue); padding: .2mm 0 .2mm 2.4mm; font-size: 8.5pt; line-height: 1.5; }
+  .points b { color: var(--text); display: block; font-size: 9pt; }
+  .points span { color: var(--mute); }
+
+  .job { margin-bottom: 3.2mm; }
+  .job .row { display: flex; align-items: baseline; gap: 2mm; }
+  .job .co { font-size: 10.6pt; font-weight: 800; }
+  .job .pos { color: var(--ink); font-weight: 600; font-size: 9.2pt; }
+  .job .badge { font-family: "DM Mono", "SC"; font-size: 6.8pt; letter-spacing: .12em; background: var(--orange); color: #fff; padding: .1mm 1.6mm; border-radius: 1mm; }
+  .job .date { margin-left: auto; font-family: "DM Mono", "SC"; font-size: 8pt; color: var(--mute); }
+  .job .intro { color: var(--mute); font-size: 8.4pt; margin: .6mm 0 .8mm; }
+  ul { list-style: none; }
+  li { position: relative; padding-left: 3.4mm; margin-bottom: .9mm; font-size: 8.9pt; line-height: 1.58; }
+  li::before { content: ""; position: absolute; left: .4mm; top: 2.3mm; width: 1.3mm; height: 1.3mm; border-radius: 50%; background: var(--blue); }
+  li b { color: var(--ink); font-weight: 700; }
+
+  .works { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2mm; margin: 1.6mm 0 2mm; }
+  .works div { border: 1px solid #DCDFEA; border-radius: 1.6mm; padding: 1.4mm 2mm; }
+  .works b { display: block; font-family: "Delius"; font-weight: 400; font-size: 9pt; color: var(--ink); letter-spacing: .02em; }
+  .works span { font-size: 7.5pt; color: var(--mute); }
+  .st { width: 1em; height: 1em; vertical-align: -0.12em; }
+  .mark b .st { width: 15pt; height: 15pt; }
+  .side h3 span .st { width: 8pt; height: 8pt; color: var(--orange); }
+  .qr .url { font-family: "DM Mono"; font-size: 6.4pt; color: var(--mute); letter-spacing: 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <aside class="side">
+    <div><span class="mark">B2<b><svg class="st" viewBox="-10 -10 20 20"><g stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M0-8V8M-8 0H8M-5.7-5.7 5.7 5.7M-5.7 5.7 5.7-5.7"/></g></svg></b></span></div>
+
+    <div class="contact">
+      <h3><span><svg class="st" viewBox="-10 -10 20 20"><g stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M0-8V8M-8 0H8M-5.7-5.7 5.7 5.7M-5.7 5.7 5.7-5.7"/></g></svg></span>CONTACT</h3>
+      <div><em>城市</em><span>广州</span></div>
+      <div><em>电话</em><span>137-2657-5091</span></div>
+      <div><em>邮箱</em><span>13726575091@gmail.com</span></div>
+      <div class="qr">
+        <img src="qr.svg" alt="作品集二维码">
+        <p>扫码看作品集<br><a href="https://b2-luojian-films.b2qq.chatgpt.site/">B2 Films &amp;<br>Moving Images</a><br><span class="url">b2-luojian-films<br>.b2qq.chatgpt.site</span></p>
+      </div>
+    </div>
+
+    <div>
+      <h3><span><svg class="st" viewBox="-10 -10 20 20"><g stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M0-8V8M-8 0H8M-5.7-5.7 5.7 5.7M-5.7 5.7 5.7-5.7"/></g></svg></span>SKILLS</h3>
+      <div class="skill"><b>AI 视频生成</b>
+        <div class="tags"><span class="hot">Seedance</span><span class="hot">Veo</span><span>Runway</span></div>
+        <p>文生 / 图生视频、多镜头叙事、角色与场景一致性控制</p></div>
+      <div class="skill"><b>AI 图像与视觉</b>
+        <div class="tags"><span class="hot">Nano Banana</span><span>Gemini</span></div>
+        <p>角色设定、分镜图、海报与 Banner 视觉、提示词设计</p></div>
+      <div class="skill"><b>AI 辅助开发</b>
+        <div class="tags"><span>Codex</span><span>Vibe Coding</span></div>
+        <p>网页与落地页搭建、内容页面结构设计</p></div>
+      <div class="skill"><b>剪辑与包装</b>
+        <div class="tags"><span>剪映</span><span>节奏剪辑</span><span>BGM / 音效</span><span>调色</span></div></div>
+      <div class="skill"><b>内容与运营</b>
+        <div class="tags"><span>编剧</span><span>分镜</span><span>选题策划</span><span>SEO 内容</span><span>热点捕捉</span><span>数据复盘</span><span>个人 IP</span></div></div>
+    </div>
+
+    <div class="edu">
+      <h3><span><svg class="st" viewBox="-10 -10 20 20"><g stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M0-8V8M-8 0H8M-5.7-5.7 5.7 5.7M-5.7 5.7 5.7-5.7"/></g></svg></span>EDUCATION</h3>
+      <div><b>广州新华学院</b><p>网络与新媒体 · 艺术学院</p><i>2024.09 — 2026.06</i></div>
+      <div><b>城建大学</b><p>新媒体策划 · 人文学院</p><i>2021.09 — 2024.06</i></div>
+    </div>
+
+    <div class="foot">Stay curious.</div>
+  </aside>
+
+  <main class="main">
+    <header class="head">
+      <h1>罗健<small>LUO JIAN</small></h1>
+      <div class="role"><span>AIGC 内容创作</span><span>AI 内容运营</span><span class="o">AI 动画编导</span></div>
+      <div class="now">NOW AT<strong>LOOVA AI</strong>loova.ai</div>
+    </header>
+
+    <section>
+      <h2>个人简介<small>PROFILE</small></h2>
+      <p class="summary">AIGC 内容创作者，现任 <strong>LOOVA AI 内容运营</strong>，负责 loova.ai 官网大部分内容的策划与制作。能<strong>独立完成 AI 动画长片</strong>从编剧、分镜、生成到剪辑的全流程，作品横跨动画音乐影像、动画短片与真人影像。兼具内容策划、平台运营与 SEO 思维，擅长把创意快速落地为可传播、可转化的内容。</p>
+      <div class="points">
+        <div><b>全流程独立创作</b><span>编剧 → 分镜 → AI 生成 → 剪辑包装，一人闭环交付</span></div>
+        <div><b>多模型生产经验</b><span>熟悉主流视频 / 图像模型的特点，按镜头需求组合使用</span></div>
+        <div><b>运营与增长思维</b><span>官网 SEO、落地页与社媒内容，关注曝光与转化</span></div>
+        <div><b>海外项目经验</b><span>服务海外客户与头部达人项目，理解不同市场的内容表达</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>工作经历<small>EXPERIENCE</small></h2>
+      <div class="job">
+        <div class="row"><span class="co">LOOVA AI</span><span class="pos">AI 内容运营</span><span class="badge">CURRENT</span><span class="date">2026.08 — 至今</span></div>
+        <p class="intro">loova.ai：一站式 AI 视频与图像创作平台，集成多家主流生成模型</p>
+        <ul>
+          <li><b>官网内容建设：</b>负责 loova.ai 大部分站内内容的策划与制作，包括模型与工具落地页、SEO 内容页、Skill 页面及首页 Banner 视觉。</li>
+          <li><b>SEO 与页面运营：</b>围绕新模型上线与促销节点规划关键词和页面结构，产出图文与演示视频素材，服务搜索曝光与页面转化。</li>
+          <li><b>社交媒体视频：</b>为模型发布与产品功能制作社媒短视频，覆盖创意、AI 生成、剪辑与包装全环节。</li>
+          <li><b>AI 动画长片：</b>独立担任编剧、导演与剪辑，完成剧本、分镜、角色与场景设定、镜头生成到剪辑配乐的全流程制作。</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="row"><span class="co">旺财科技</span><span class="pos">AIGC 内容创作</span><span class="date">2026.04 — 2026.08</span></div>
+        <ul>
+          <li>参与 AIGC 内容项目从需求沟通、创意策划、脚本与分镜设计、素材生成、视频制作到成片交付的全流程执行。</li>
+          <li>参与以色列海外客户 <b>5 个</b>完整 AIGC 项目，并参与快手头部达人（<b>7000 万粉丝级</b>）AI 短剧项目，负责剧本拆解、分镜设计、AI 内容生成及成片优化。</li>
+          <li>对接客户需求与修改意见，同步制作进度，根据反馈迭代内容，优化视频表现与交付效率。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>个人作品与项目<small>WORKS</small></h2>
+      <div class="job">
+        <div class="row"><span class="co">B2 — Films &amp; Moving Images</span><span class="pos">个人作品集网站</span></div>
+        <ul>
+          <li>独立策划个人影像品牌 B2 与作品集网站，统一视觉风格（钴蓝 / 米白 / 橙），按“动画音乐影像 · 动画 · 真人影像”分类呈现作品。</li>
+        </ul>
+        <div class="works">
+          <div><b>CANDY MUTINY</b><span>动画音乐影像</span></div>
+          <div><b>ASHBOUND</b><span>动画</span></div>
+          <div><b>MY BLOCK</b><span>动画</span></div>
+          <div><b>MOM’S HOME</b><span>真人影像</span></div>
+        </div>
+      </div>
+      <div class="job">
+        <div class="row"><span class="co">Coffee Atlas</span><span class="pos">AI 辅助内容产品设计</span></div>
+        <ul>
+          <li>独立策划并用 Vibe Coding 搭建咖啡知识网站，负责内容架构、页面规划与用户体验，探索 AI 辅助内容生产与数字产品构建流程。</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>
