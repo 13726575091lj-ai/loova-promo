@@ -85,9 +85,9 @@ function flowStops(flow, colors) {
  * The extrusion is drawn as stacked slices, dark with a coloured rim, receding to VP.
  */
 function glyph3D(ctx, L, g, base, st, look) {
-  const { s, depth, rot, sy, alpha, breathe = 1 } = st;
+  const { s, depth, rot, sy, alpha, breathe = 1, oy = 0, tilt = 0 } = st;
   if (alpha <= 0.002) return;
-  const cx = g.x + g.w / 2, cy = base - L.capH * 0.5;
+  const cx = g.x + g.w / 2, cy = base - L.capH * 0.5 + oy;
   const slices = depth > 0.08 ? 12 : 6;
   const place = (sc) => [VP.x + (cx - VP.x) * sc, VP.y + (cy - VP.y) * sc];
   ctx.save();
@@ -98,7 +98,7 @@ function glyph3D(ctx, L, g, base, st, look) {
     const [px, py] = place(sc);
     ctx.save();
     ctx.translate(px, py);
-    ctx.rotate(rot);
+    ctx.rotate(rot + tilt);
     ctx.scale(sc * breathe, sc * sy * breathe);
     ctx.translate(-g.w / 2, L.capH * 0.5);
     fn();
@@ -123,13 +123,43 @@ function glyph3D(ctx, L, g, base, st, look) {
     look.stops.forEach(([p, c]) => grd.addColorStop(p, c));
     ctx.fillStyle = grd;
     ctx.fillText(g.ch, 0, 0);
+    // flowing light: a soft diagonal band that travels across the whole row
+    if (look.shine != null) {
+      const bx = look.shine - g.x; // band centre in glyph-local x (home scale)
+      if (bx > -260 && bx < g.w + 260) {
+        const sg = ctx.createLinearGradient(bx - 150, -L.capH, bx + 30, 0);
+        sg.addColorStop(0, 'rgba(255,255,255,0)');
+        sg.addColorStop(0.5, 'rgba(255,255,255,0.85)');
+        sg.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.fillStyle = sg;
+        ctx.fillText(g.ch, 0, 0);
+      }
+    }
     if (look.edge) {
-      ctx.lineWidth = 2 / s;
+      ctx.lineWidth = 2.2 / s;
       ctx.strokeStyle = look.edge;
       ctx.strokeText(g.ch, 0, 0);
     }
   });
   ctx.restore();
+}
+
+/** fan arc: letters sit on an arch (edges lower), tilt along its tangent and grow slightly outward */
+function fanArc(st, g, total, A) {
+  if (!A) return st;
+  const hw = total / 2;
+  const v = clamp((g.x + g.w / 2 - W / 2) / hw, -1, 1);
+  st.oy = A * v * v;
+  st.tilt = Math.atan((2 * A * v) / hw);
+  st.sy *= 1 + 0.08 * v * v;
+  return st;
+}
+
+/** shine band x position for a row (sweeps every `period` seconds once held) */
+function shineX(t, t0, x0, w, period = 1.15) {
+  if (t < t0) return null;
+  const u = ((t - t0) % period) / period;
+  return lerp(x0 - 300, x0 + w + 300, ease.inOutQuad(u));
 }
 
 /** letter state: entrance fly-in, flowing breathe while held, exit fly-out */
@@ -223,15 +253,15 @@ export default {
 
     // ---------------------------------------------------------------- landing burst (ring + speed lines)
     const landT = T.l1 + T.fly * 0.45;
-    if (part.visible) burst(ctx, t - landT, pal, mint, part.opacity, 1);
+    if (part.visible) burst(ctx, t - landT, pal, mint, cyan, part.opacity, 1);
     // smaller kick on the in-hold footage cut
     const holdCut = cuts.find((c) => c > landT + 0.2 && c < T.exit);
-    if (part.visible && holdCut) burst(ctx, t - holdCut, pal, mint, part.opacity * 0.6, 0.7);
+    if (part.visible && holdCut) burst(ctx, t - holdCut, pal, mint, cyan, part.opacity * 0.6, 0.7);
     const kick = holdCut ? Math.exp(-Math.max(0, t - holdCut) / 0.09) * (t >= holdCut ? 1 : 0) : 0;
 
     // ---------------------------------------------------------------- type
     const held = seg(t, landT + 0.1, landT + 0.5, ease.inOutQuad);
-    const ink = { stops: [[0, '#4A525C'], [0.42, '#1A1E23'], [0.6, '#0B0B0C'], [1, '#22272D']], wall: '#0B0B0C', rim: rgba(mint, 0.95), edge: null };
+    const flow1 = (t * 0.45) % 1;
     const groupK = 1 + 0.02 * kick;
     ctx.save();
     ctx.translate(VP.x, VP.y);
@@ -261,11 +291,15 @@ export default {
         ctx.translate(-W / 2, -cy);
         if (j > 0) {
           ctx.globalAlpha *= 0.85;
-          drawIcon(ctx, x0, cy - iconS / 2, iconS, P, assets.logo, { fill: '#0B0B0C', boltScale: 0 });
-          drawWordmark(ctx, x0 + iconS + gap, cy - wordH / 2, wordH, P, assets.logo, '#0B0B0C');
+          drawIcon(ctx, x0, cy - iconS / 2, iconS, P, assets.logo, { fill: '#05382E', boltScale: 0 });
+          drawWordmark(ctx, x0 + iconS + gap, cy - wordH / 2, wordH, P, assets.logo, '#05382E');
         } else {
           drawIcon(ctx, x0, cy - iconS / 2, iconS, P, assets.logo);
-          drawWordmark(ctx, x0 + iconS + gap, cy - wordH / 2, wordH, P, assets.logo, '#0B0B0C');
+          // wordmark: brand gradient whose band keeps flowing (no black type)
+          const f = (t * 0.7) % 1;
+          const wg = ctx.createLinearGradient(x0 + iconS + gap - wordW * f, 0, x0 + iconS + gap + wordW * (2 - f), 0);
+          [[0, mint], [0.25, cyan], [0.5, '#0A8F86'], [0.75, cyan], [1, mint]].forEach(([q, c]) => wg.addColorStop(q, c));
+          drawWordmark(ctx, x0 + iconS + gap, cy - wordH / 2, wordH, P, assets.logo, wg);
         }
         ctx.restore();
       }
@@ -281,11 +315,16 @@ export default {
       let minE = 1, maxX = 0;
       // draw far letters first so the closest (largest) sits on top
       const order = glyphs.map((g, i) => i).sort((a, b) => pers[a].s0 - pers[b].s0);
-      const states = glyphs.map((g, i) => letterState(t, i, glyphs.length, pers[i], T.l1, T, held));
+      const states = glyphs.map((g, i) => fanArc(letterState(t, i, glyphs.length, pers[i], T.l1, T, held), g, total, prm.arc1 ?? 70));
+      const look = {
+        stops: flowStops(flow1, ['#F2FFFB', '#8AF7DC', cyan, '#1E9BE6', '#7DF9D9']),
+        wall: '#0A3F57', rim: rgba(cyan, 0.95), edge: 'rgba(10,63,87,0.95)',
+        shine: shineX(t, landT + 0.25, W / 2 - total / 2, total),
+      };
       order.reverse().forEach((i) => {
         const st = states[i];
         st.sy *= 1.18;
-        glyph3D(ctx, L, glyphs[i], L1_BASE, st, ink);
+        glyph3D(ctx, L, glyphs[i], L1_BASE, st, look);
       });
       states.forEach((st) => ((minE = Math.min(minE, st.e)), (maxX = Math.max(maxX, st.xk))));
       S.report('open.line1', { x: W / 2 - total / 2, y: L1_BASE - L.capH * 1.18, w: total, h: L.capH * 1.18 }, minE * (1 - maxX), L.fits);
@@ -298,12 +337,13 @@ export default {
       const pers = personas(glyphs.length, 19);
       const flow = (t * 0.6) % 1;
       const look = {
-        stops: flowStops(flow, [mixHex('#FFFFFF', mint, 0.35), mint, cyan, '#00A98C', mint]),
-        wall: '#06261F', rim: rgba(mint, 0.9), edge: 'rgba(6,38,31,0.9)',
+        stops: flowStops(flow, [mixHex('#FFFFFF', mint, 0.3), mint, '#00C7A0', cyan, mint]),
+        wall: '#05382E', rim: rgba(mint, 0.9), edge: 'rgba(5,56,46,0.95)',
+        shine: shineX(t, landT + 0.45, W / 2 - total / 2, total),
       };
       let minE = 1, maxX = 0;
       glyphs.forEach((g, i) => {
-        const st = letterState(t, i, glyphs.length, pers[i], T.l2, T, held);
+        const st = fanArc(letterState(t, i, glyphs.length, pers[i], T.l2, T, held), g, total, prm.arc2 ?? 34);
         st.sy *= 1.18;
         glyph3D(ctx, L, g, L2_BASE, st, look);
         minE = Math.min(minE, st.e);
@@ -352,7 +392,7 @@ export default {
 };
 
 /** expanding ring + radial speed lines; u = time since trigger */
-function burst(ctx, u, pal, mint, op, size) {
+function burst(ctx, u, pal, mint, cyan, op, size) {
   if (u < 0 || u > 0.45) return;
   const k = ease.outCubic(u / 0.45);
   ctx.save();
@@ -362,7 +402,7 @@ function burst(ctx, u, pal, mint, op, size) {
   ctx.beginPath();
   ctx.arc(VP.x, VP.y, lerp(220, 1150, k) * size, 0, Math.PI * 2);
   ctx.stroke();
-  ctx.strokeStyle = rgba('#0B0B0C', 0.8);
+  ctx.strokeStyle = rgba(cyan, 0.8);
   ctx.lineWidth = lerp(3, 1, k) * size;
   ctx.beginPath();
   ctx.arc(VP.x, VP.y, lerp(180, 980, k) * size, 0, Math.PI * 2);
@@ -373,7 +413,7 @@ function burst(ctx, u, pal, mint, op, size) {
   for (let i = 0; i < 28; i++) {
     const a = (i / 28) * Math.PI * 2 + r() * 0.15;
     const r0 = lerp(380, 820, k) * size + r() * 80, len = (90 + r() * 140) * (1 - k * 0.6) * size;
-    ctx.strokeStyle = i % 3 === 0 ? rgba(mint, 1) : rgba('#0B0B0C', 0.85);
+    ctx.strokeStyle = i % 3 === 0 ? rgba(mint, 1) : rgba(cyan, 0.9);
     ctx.lineWidth = (i % 3 === 0 ? 5 : 3) * size;
     ctx.beginPath();
     ctx.moveTo(VP.x + Math.cos(a) * r0, VP.y + Math.sin(a) * r0 * 0.75);

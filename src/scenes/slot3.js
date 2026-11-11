@@ -53,9 +53,45 @@ function wordSprite(ctx, P, text, style) {
   }
   g.fillStyle = grd;
   g.fillText(text, pad, base);
-  const s = { c, w, h, L, cy: base - L.capH / 2 };
+  const s = { c, w, h, L, cy: base - L.capH / 2, base };
   cache.set(key, s);
   return s;
+}
+
+/**
+ * Focused rows get live "flowing light": the cached gradient word is redrawn each frame into a
+ * scratch canvas with a hot-pink glow that drifts along the word and a white glint band on top.
+ */
+const live = new Map();
+function liveSprite(sp, t, pal, key) {
+  let o = live.get(key);
+  if (!o) {
+    o = { c: new OffscreenCanvas(sp.w, sp.h), t: null };
+    live.set(key, o);
+  }
+  if (o.t === t) return { ...sp, c: o.c };
+  o.t = t;
+  const g = o.c.getContext('2d');
+  g.globalCompositeOperation = 'source-over';
+  g.clearRect(0, 0, sp.w, sp.h);
+  g.drawImage(sp.c, 0, 0);
+  g.globalCompositeOperation = 'source-atop';
+  // drifting hot glow (colour flow)
+  const gx = ((t * 0.55) % 1) * (sp.w + 600) - 300;
+  const rg = g.createRadialGradient(gx, sp.base - sp.L.capH * 0.6, 0, gx, sp.base - sp.L.capH * 0.6, 340);
+  rg.addColorStop(0, rgba(pal.pinkHot, 0.75));
+  rg.addColorStop(1, rgba(pal.pinkHot, 0));
+  g.fillStyle = rg;
+  g.fillRect(0, 0, sp.w, sp.h);
+  // glint band
+  const bx = ((t * 0.8 + 0.4) % 1) * (sp.w + 500) - 250;
+  const lg = g.createLinearGradient(bx - 90, 0, bx + 90, sp.h);
+  lg.addColorStop(0, 'rgba(255,255,255,0)');
+  lg.addColorStop(0.5, 'rgba(255,255,255,0.8)');
+  lg.addColorStop(1, 'rgba(255,255,255,0)');
+  g.fillStyle = lg;
+  g.fillRect(0, 0, sp.w, sp.h);
+  return { ...sp, c: o.c };
 }
 
 /** draw a sprite bowed (arch) and optionally waved, in vertical strips */
@@ -106,7 +142,9 @@ export default {
       for (const r of rows) {
         const isFinal = r.i === N;
         const focus = clamp(1 - r.d * 1.6);
-        const sp = wordSprite(ctx, P, itemAt(prm, r.i, N), focus > 0.02 ? 'hot' : 'soft');
+        const txt = itemAt(prm, r.i, N);
+        let sp = wordSprite(ctx, P, txt, focus > 0.02 ? 'hot' : 'soft');
+        if (focus > 0.02) sp = liveSprite(sp, S.gT, pal, txt + '#' + (r.i % 4));
         const y = CY + RC * Math.sin(r.th);
         const sy = Math.cos(r.th);
         const sc = lerp(1, 0.62, clamp(r.d / 2.6));

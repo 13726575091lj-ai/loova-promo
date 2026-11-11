@@ -4,7 +4,7 @@
 // card then glides to the front-card slot of the localize scene (exact hand-off geometry).
 import { seg, ease, lerp, clamp, rgba, roundRectPath, layerCtl, withLayer } from '../util.js';
 import { W, H, polkaField, polkaCover } from '../fx.js';
-import { CARD, frontCardRect, centerCardRect, drawLocalizeBg, firstMarket } from './shared.js';
+import { CARD, frontCardRect, centerCardRect, drawLocalizeBg, drawFlowBg, firstMarket } from './shared.js';
 import { SLOT_SPACING } from './slot3.js';
 
 export function dragTimes(scene, dur) {
@@ -54,10 +54,15 @@ export default {
     const [pw, ph] = P.poster.size;
 
     // background: white; the localize light pool comes up during the glide
-    ctx.fillStyle = pal.paper;
-    ctx.fillRect(0, 0, W, H);
-    const gk = seg(t, T.glide, dur, ease.inOutCubic);
-    if (scene.next === 'localize' && gk > 0) drawLocalizeBg(ctx, P, gk);
+    // v4: the poster stays centred (flag-drop scene follows); v3: glides to the localize slot
+    const glides = scene.next === 'localize';
+    if (scene.params.flowBg) drawFlowBg(ctx, P, S.gT, 1);
+    else {
+      ctx.fillStyle = pal.paper;
+      ctx.fillRect(0, 0, W, H);
+    }
+    const gk = glides ? seg(t, T.glide, dur, ease.inOutCubic) : 0;
+    if (glides && gk > 0) drawLocalizeBg(ctx, P, gk);
 
     // drag path: from the right edge to centre, inOutCubic, with a velocity tilt (it swings when pulled)
     const dk = seg(t, T.grab, T.drop, ease.inOutCubic);
@@ -98,7 +103,7 @@ export default {
         ctx.save();
         roundRectPath(ctx, R.x, R.y, R.w, R.h, R.r);
         ctx.clip();
-        const src = S.poster.source(P, firstMarket(P)).source;
+        const src = scene.params.buildPoster === 'clean' ? assets.images[P.poster.clean] : S.poster.source(P, firstMarket(P)).source;
         if (src) ctx.drawImage(src, -CARD.w / 2, -CARD.h / 2, CARD.w, CARD.h);
         ctx.restore();
       }
@@ -135,7 +140,11 @@ export default {
         ctx.fillRect(x - hs / 2, y - hs / 2, hs, hs);
         ctx.strokeRect(x - hs / 2, y - hs / 2, hs, hs);
       }
-      // size tag under the box
+      // size tag under the box (off when the canvas must stay free of text)
+      if (scene.params.sizeTag === false) {
+        ctx.restore();
+        return;
+      }
       const tag = `${Math.round(R.w * 2)} × ${Math.round(R.h * 2)}`;
       ctx.font = `700 ${18 / cardScale}px "${P.fonts.ui}"`;
       const tw = ctx.measureText(tag).width + 20 / cardScale;
@@ -198,7 +207,7 @@ export default {
       { t: T.drop, type: 'lock', gain: 0.6 },
       { t: T.drop, type: 'pop', gain: 0.45 },
       { t: T.build0, type: 'shimmer', len: 0.45, gain: 0.35 },
-      { t: T.glide, type: 'swish', len: dur - T.glide, gain: 0.4, pan: 0.4 },
+      ...(scene.next === 'localize' ? [{ t: T.glide, type: 'swish', len: dur - T.glide, gain: 0.4, pan: 0.4 }] : []),
     ];
   },
 

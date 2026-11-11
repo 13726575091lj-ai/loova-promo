@@ -1,3 +1,24 @@
+# LOOVA — Seedream 5.5 launch film (v4, 12 s, flag drop)
+
+**Latest master: `LOOVA_12s_v4.mp4`** (1920×1080, 30 fps, 12.00 s). Smaller copy: `LOOVA_12s_v4_small.mp4`.
+QC, stems, project snapshot and contact sheet: `dist/v4/`. v3 timeline kept as `project_12s_v3.json`.
+
+| # | Scene (type) | Time | What happens |
+|---|---|---|---|
+| 1 | `open` (`open3`) | 0.00–2.00 | Runway clip with glitch / colour-fringe / light-leak FX at both cuts. LOOVA / SEEDREAM / 5.5 fly in from the lens with 3D extrusion, sit on a fan-shaped arch, breathe, and carry a flowing gradient + light band (cyan/blue and mint, no black type); fly back out through the lens |
+| 2 | `slot` (`slot3`) | 2.00–3.70 | White. Curved pink reel IMAGE 2.6 / SEEDREAM 5.0 PRO / SOUL 2.0 spins and locks on SEEDREAM 5.5; drifting hot-pink glow + glint; exits on pink halftone |
+| 3 | `drag` | 3.70–4.65 | Cursor drags the blue-haired model to centre; a clean (no-text) poster grows around her and stays centred |
+| 4 | `flags` (`flagdrop`) | 4.65–9.35 | Flags tossed into the poster TH → JP → ES → KR → US. Each hit: dot splash in the flag colours, close-up punch, halftone wave turns the poster into that language. No canvas text |
+| 5 | `layers` (`layers3`) | 9.35–10.95 | English poster splits into 6 layers, three camera angles |
+| 6 | `brand` | 10.95–12.00 | Poster → LOOVA icon + wordmark with a flowing teal/mint gradient |
+
+Scenes 3–6 share one white flowing-light background (`drawFlowBg`, driven by global time).
+v4 QC: 0 unplanned motion spikes, 0 global flicker, 0 text overflow / clipping, 10/10 holds readable,
+0 clipped samples, A/V offset 0 ms, 19/19 SFX cues within one frame. Block flicker: 8 frames (CHECK),
+all inside the title fly-in/out, the reel blur and the flag trails.
+
+---
+
 # LOOVA — Seedream 5.5 launch film (v3, 12 s, all white)
 
 **Latest master: `LOOVA_12s_v3.mp4`** (1920×1080, 30 fps, 12.00 s, H.264 + AAC, 8-sample motion blur).

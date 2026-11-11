@@ -34,7 +34,7 @@ export async function loadAssets(project, base = '') {
       document.fonts.add(ff);
     })
   );
-  const urls = new Set([...Object.values(project.poster.images), project.poster.en.background, project.poster.en.crowd, project.poster.en.subject]);
+  const urls = new Set([...Object.values(project.poster.images), project.poster.en.background, project.poster.en.crowd, project.poster.en.subject, ...(project.poster.clean ? [project.poster.clean] : [])]);
   const images = {};
   await Promise.all([...urls].map(async (u) => (images[u] = await loadImage(base + u))));
   const logo = await (await fetch(base + project.logo.paths)).json();

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "LOOVA — Seedream 5.5 launch film (12 s, v3 white)",
+    "title": "LOOVA — Seedream 5.5 launch film (12 s, v4 flag drop)",
     "width": 1920,
     "height": 1080,
     "fps": 30,
@@ -43,17 +43,19 @@
     {
       "id": "open",
       "type": "open3",
-      "duration": 2.2,
+      "duration": 2.0,
       "enabled": true,
       "params": {
         "line1": "SEEDREAM",
         "line2": "5.5",
         "clipIn": 0,
         "playbackRate": 1,
-        "wash": 0.6,
+        "wash": 0.5,
         "enterAt": 0.55,
         "flyLen": 0.42,
-        "exitLen": 0.45
+        "exitLen": 0.45,
+        "arc1": 70,
+        "arc2": 34
       },
       "layers": {
         "footage": {
@@ -89,7 +91,7 @@
     {
       "id": "slot",
       "type": "slot3",
-      "duration": 1.75,
+      "duration": 1.7,
       "enabled": true,
       "params": {
         "items": [
@@ -120,14 +122,17 @@
     {
       "id": "drag",
       "type": "drag",
-      "duration": 1.15,
+      "duration": 0.95,
       "enabled": true,
       "params": {
         "dropAt": 0.55,
         "buildAt": 0.6,
         "buildLen": 0.3,
         "glideLen": 0.3,
-        "revealLen": 0.32
+        "revealLen": 0.32,
+        "buildPoster": "clean",
+        "sizeTag": false,
+        "flowBg": true
       },
       "layers": {
         "subject": {
@@ -149,12 +154,11 @@
       }
     },
     {
-      "id": "localize",
-      "type": "localize",
-      "duration": 4.2,
+      "id": "flags",
+      "type": "flagdrop",
+      "duration": 4.7,
       "enabled": true,
       "params": {
-        "header": "ONE POSTER. EVERY MARKET.",
         "markets": [
           {
             "id": "th",
@@ -197,38 +201,28 @@
             "weight": 1
           }
         ],
-        "swing": 0.18,
-        "holdMode": "auto",
-        "exit": 0.3,
-        "panelIn": 0.22
+        "firstAt": 0.08,
+        "flight": 0.3,
+        "reveal": 0.26,
+        "punch": 0.2
       },
       "layers": {
-        "dots": {
-          "visible": true,
-          "opacity": 1
-        },
-        "fan": {
-          "visible": true,
-          "opacity": 1
-        },
-        "posters": {
+        "poster": {
           "visible": true,
           "scale": 1,
           "x": 0,
           "y": 0
         },
-        "panel": {
+        "flags": {
           "visible": true,
-          "scale": 1,
-          "x": 0,
-          "y": 0
+          "opacity": 1
         }
       }
     },
     {
       "id": "layers",
       "type": "layers3",
-      "duration": 1.65,
+      "duration": 1.6,
       "enabled": true,
       "params": {
         "separation": 190,
@@ -248,7 +242,8 @@
             -14,
             30
           ]
-        ]
+        ],
+        "flowBg": true
       },
       "layers": {
         "dots": {
@@ -274,7 +269,8 @@
         "tagline": "SEEDANCE 5.5  ·  SEEDREAM 5.5",
         "sub": "",
         "iconSize": 230,
-        "light": true
+        "light": true,
+        "flowBg": true
       },
       "layers": {
         "particles": {
@@ -453,7 +449,8 @@
         534,
         870
       ]
-    }
+    },
+    "clean": "assets/layers/en_clean_no_text.png"
   },
   "logo": {
     "paths": "assets/logo/logo_paths.json"

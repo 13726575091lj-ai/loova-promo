@@ -1,0 +1,476 @@
+{
+  "meta": {
+    "title": "LOOVA — Seedream 5.5 launch film (12 s, v4 flag drop)",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "safeMargin": 0.04
+  },
+  "palette": {
+    "bg": "#05070A",
+    "ink": "#FFFFFF",
+    "paper": "#FFFFFF",
+    "posterInk": "#0B0B0C",
+    "mint": "#00F5A0",
+    "cyan": "#00D9F5",
+    "pink": "#FF3D9A",
+    "pinkHot": "#FF8AC8",
+    "pinkDeep": "#D1166F",
+    "blue": "#077CB4",
+    "blueGlow": "#1E9BE6",
+    "navy": "#04101F",
+    "chromeTop": "#FFFFFF",
+    "chromeBottom": "#7D8792",
+    "charcoal": "#16181C"
+  },
+  "fonts": {
+    "display": "Archivo Black",
+    "condensed": "Anton",
+    "ui": "Montserrat",
+    "serif": "Libre Bodoni",
+    "posterSans": "Jost",
+    "th": "Noto Sans Thai",
+    "ja": "Noto Sans JP",
+    "ko": "Noto Sans KR"
+  },
+  "brand": {
+    "name": "LOOVA",
+    "gradientStart": "mint",
+    "gradientEnd": "cyan",
+    "gradientAngle": 40
+  },
+  "scenes": [
+    {
+      "id": "open",
+      "type": "open3",
+      "duration": 2.0,
+      "enabled": true,
+      "params": {
+        "line1": "SEEDREAM",
+        "line2": "5.5",
+        "clipIn": 0,
+        "playbackRate": 1,
+        "wash": 0.5,
+        "enterAt": 0.55,
+        "flyLen": 0.42,
+        "exitLen": 0.45,
+        "arc1": 70,
+        "arc2": 34
+      },
+      "layers": {
+        "footage": {
+          "visible": true,
+          "scale": 1,
+          "x": 0,
+          "y": 0
+        },
+        "particles": {
+          "visible": true,
+          "opacity": 1
+        },
+        "brandRow": {
+          "visible": true,
+          "scale": 1,
+          "x": 0,
+          "y": 0
+        },
+        "line1": {
+          "visible": true,
+          "scale": 1,
+          "x": 0,
+          "y": 0
+        },
+        "line2": {
+          "visible": true,
+          "scale": 1,
+          "x": 0,
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": "slot",
+      "type": "slot3",
+      "duration": 1.7,
+      "enabled": true,
+      "params": {
+        "items": [
+          "IMAGE 2.6",
+          "SEEDREAM 5.0 PRO",
+          "SOUL 2.0"
+        ],
+        "final": "SEEDREAM 5.5",
+        "spinRows": 9,
+        "landAt": 0.36,
+        "exitLen": 0.42
+      },
+      "layers": {
+        "reel": {
+          "visible": true,
+          "scale": 1,
+          "x": 0,
+          "y": 0
+        },
+        "frame": {
+          "visible": true,
+          "scale": 1,
+          "x": 0,
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": "drag",
+      "type": "drag",
+      "duration": 0.95,
+      "enabled": true,
+      "params": {
+        "dropAt": 0.55,
+        "buildAt": 0.6,
+        "buildLen": 0.3,
+        "glideLen": 0.3,
+        "revealLen": 0.32,
+        "buildPoster": "clean",
+        "sizeTag": false,
+        "flowBg": true
+      },
+      "layers": {
+        "subject": {
+          "visible": true,
+          "scale": 1,
+          "x": 0,
+          "y": 0
+        },
+        "selection": {
+          "visible": true,
+          "scale": 1,
+          "x": 0,
+          "y": 0
+        },
+        "cursor": {
+          "visible": true,
+          "opacity": 1
+        }
+      }
+    },
+    {
+      "id": "flags",
+      "type": "flagdrop",
+      "duration": 4.7,
+      "enabled": true,
+      "params": {
+        "markets": [
+          {
+            "id": "th",
+            "code": "TH",
+            "country": "THAILAND",
+            "language": "ภาษาไทย",
+            "font": "th",
+            "weight": 0.2
+          },
+          {
+            "id": "ja",
+            "code": "JP",
+            "country": "JAPAN",
+            "language": "日本語",
+            "font": "ja",
+            "weight": 0.2
+          },
+          {
+            "id": "es",
+            "code": "ES",
+            "country": "SPAIN",
+            "language": "Español",
+            "font": "ui",
+            "weight": 0.2
+          },
+          {
+            "id": "ko",
+            "code": "KR",
+            "country": "KOREA",
+            "language": "한국어",
+            "font": "ko",
+            "weight": 0.2
+          },
+          {
+            "id": "en",
+            "code": "US",
+            "country": "UNITED STATES",
+            "language": "English",
+            "font": "ui",
+            "weight": 1
+          }
+        ],
+        "firstAt": 0.08,
+        "flight": 0.3,
+        "reveal": 0.26,
+        "punch": 0.2
+      },
+      "layers": {
+        "poster": {
+          "visible": true,
+          "scale": 1,
+          "x": 0,
+          "y": 0
+        },
+        "flags": {
+          "visible": true,
+          "opacity": 1
+        }
+      }
+    },
+    {
+      "id": "layers",
+      "type": "layers3",
+      "duration": 1.6,
+      "enabled": true,
+      "params": {
+        "separation": 190,
+        "angles": [
+          [
+            0.22,
+            -38,
+            10
+          ],
+          [
+            0.48,
+            34,
+            -7
+          ],
+          [
+            0.72,
+            -14,
+            30
+          ]
+        ],
+        "flowBg": true
+      },
+      "layers": {
+        "dots": {
+          "visible": true,
+          "opacity": 1
+        },
+        "frames": {
+          "visible": true,
+          "opacity": 1
+        },
+        "labels": {
+          "visible": true,
+          "opacity": 1
+        }
+      }
+    },
+    {
+      "id": "brand",
+      "type": "brand",
+      "duration": 1.05,
+      "enabled": true,
+      "params": {
+        "tagline": "SEEDANCE 5.5  ·  SEEDREAM 5.5",
+        "sub": "",
+        "iconSize": 230,
+        "light": true,
+        "flowBg": true
+      },
+      "layers": {
+        "particles": {
+          "visible": true,
+          "opacity": 1
+        },
+        "lockup": {
+          "visible": true,
+          "scale": 1,
+          "x": 0,
+          "y": 0
+        },
+        "tagline": {
+          "visible": false,
+          "scale": 1,
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  ],
+  "poster": {
+    "size": [
+      685,
+      1024
+    ],
+    "images": {
+      "th": "assets/posters/poster_th.png",
+      "ja": "assets/posters/poster_ja.png",
+      "es": "assets/posters/poster_es.png",
+      "ko": "assets/posters/poster_ko.png",
+      "en": "assets/posters/poster_en.png"
+    },
+    "en": {
+      "background": "assets/layers/en_background.png",
+      "crowd": "assets/layers/en_crowd.png",
+      "subject": "assets/layers/en_subject.png",
+      "labels": {
+        "background": "BACKGROUND",
+        "crowd": "CROWD",
+        "masthead": "MASTHEAD",
+        "subject": "SUBJECT",
+        "coverlines": "COVER LINES",
+        "headline": "HEADLINE"
+      },
+      "layers": {
+        "background": {
+          "visible": true,
+          "scale": 1,
+          "x": 0,
+          "y": 0
+        },
+        "crowd": {
+          "visible": true,
+          "scale": 1,
+          "x": 0,
+          "y": 0
+        },
+        "masthead": {
+          "visible": true,
+          "scale": 1,
+          "x": 0,
+          "y": 0
+        },
+        "subject": {
+          "visible": true,
+          "scale": 1,
+          "x": 0,
+          "y": 0
+        },
+        "coverlines": {
+          "visible": true,
+          "scale": 1,
+          "x": 0,
+          "y": 0
+        },
+        "headline": {
+          "visible": true,
+          "scale": 1,
+          "x": 0,
+          "y": 0
+        }
+      },
+      "text": {
+        "masthead": {
+          "mode": "masthead",
+          "text": "EDGE",
+          "accent": [
+            2
+          ],
+          "box": [
+            22,
+            24,
+            642,
+            170
+          ],
+          "font": "serif",
+          "weight": 500,
+          "color": "posterInk",
+          "accentColor": "blue"
+        },
+        "date": {
+          "text": "NOVEMBER 2026",
+          "x": 657,
+          "y": 214,
+          "align": "right",
+          "size": 15,
+          "font": "posterSans",
+          "weight": 400,
+          "letterSpacing": 0.03,
+          "color": "posterInk",
+          "maxWidth": 220
+        },
+        "issue": {
+          "text": "THE STYLE ISSUE",
+          "x": 657,
+          "y": 233,
+          "align": "right",
+          "size": 12,
+          "font": "posterSans",
+          "weight": 400,
+          "letterSpacing": 0.03,
+          "color": "posterInk",
+          "maxWidth": 220
+        },
+        "cover1": {
+          "text": "BEAUTY\nWITHOUT RULES",
+          "x": 657,
+          "y": 319,
+          "align": "blockRight",
+          "size": 16.5,
+          "lineHeight": 1.03,
+          "font": "posterSans",
+          "weight": 400,
+          "color": "posterInk",
+          "maxWidth": 220
+        },
+        "cover2": {
+          "text": "THE POWER OF\nINDIVIDUALITY",
+          "x": 657,
+          "y": 391,
+          "align": "blockRight",
+          "size": 16.5,
+          "lineHeight": 1.03,
+          "font": "posterSans",
+          "weight": 400,
+          "color": "posterInk",
+          "maxWidth": 220
+        },
+        "headline": {
+          "text": "THE NEW\nBLUE",
+          "x": 33,
+          "y": 722,
+          "size": 78,
+          "lineHeight": 0.87,
+          "font": "serif",
+          "weight": 500,
+          "color": "paper",
+          "maxWidth": 420
+        },
+        "deck": {
+          "text": "A NEW GENERATION\nOF FEARLESS STYLE",
+          "x": 33,
+          "y": 873,
+          "size": 27,
+          "lineHeight": 0.93,
+          "font": "posterSans",
+          "weight": 400,
+          "color": "paper",
+          "maxWidth": 420
+        }
+      },
+      "subjectBox": [
+        98,
+        153,
+        534,
+        870
+      ]
+    },
+    "clean": "assets/layers/en_clean_no_text.png"
+  },
+  "logo": {
+    "paths": "assets/logo/logo_paths.json"
+  },
+  "audio": {
+    "sampleRate": 48000,
+    "bpm": 120,
+    "root": "A",
+    "musicGain": 0.75,
+    "sfxGain": 0.9,
+    "duck": 0.45,
+    "reverb": 0.22,
+    "peakDb": -1.0,
+    "tailFade": 0.25
+  },
+  "footage": {
+    "dir": "assets/footage/runway",
+    "count": 84,
+    "fps": 30,
+    "pad": 3,
+    "source": "assets/footage/runway_source.mp4"
+  }
+}

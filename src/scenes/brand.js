@@ -2,7 +2,7 @@
 // particles burst, the wordmark wipes on and the tagline settles. Ends on the logo.
 import { seg, ease, lerp, rgba, layoutText, layerCtl, withLayer, roundRectPath } from '../util.js';
 import { W, H, particleSphere, embers, drawIcon, drawWordmark, brandGradient, drawLines, vignette } from '../fx.js';
-import { CARD, lockupLayout } from './shared.js';
+import { CARD, lockupLayout, drawFlowBg } from './shared.js';
 
 function times(dur) {
   const k = Math.min(1, dur / 2.5);
@@ -20,6 +20,7 @@ export default {
     const light = !!prm.light;
     ctx.fillStyle = light ? pal.paper : pal.bg;
     ctx.fillRect(0, 0, W, H);
+    if (light && prm.flowBg) drawFlowBg(ctx, P, S.gT, 1);
     const glowK = seg(t, T.land - 0.1, T.land + 0.6);
     const g = ctx.createRadialGradient(W / 2, LK.cy, 0, W / 2, LK.cy, 950);
     g.addColorStop(0, rgba(pal.cyan, 0.22 * glowK));
@@ -157,11 +158,12 @@ function flowInk(ctx, LK, t, P) {
   const f = ((t * 0.9) % 1) * 2 - 0.5;
   const g = ctx.createLinearGradient(x0 - w * 0.5, 0, x0 + w * 1.5, 0);
   const at = (p) => Math.max(0, Math.min(1, p));
-  g.addColorStop(0, '#0B0B0C');
-  g.addColorStop(at(f / 2 + 0.1), '#0B0B0C');
+  // deep teal → cyan base (no black) with a bright mint band flowing through
+  g.addColorStop(0, '#04685C');
+  g.addColorStop(at(f / 2 + 0.1), '#078C9E');
   g.addColorStop(at(f / 2 + 0.2), m);
   g.addColorStop(at(f / 2 + 0.28), c);
-  g.addColorStop(at(f / 2 + 0.38), '#0B0B0C');
-  g.addColorStop(1, '#0B0B0C');
+  g.addColorStop(at(f / 2 + 0.38), '#077CB4');
+  g.addColorStop(1, '#04685C');
   return g;
 }

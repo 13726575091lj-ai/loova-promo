@@ -3,7 +3,7 @@
 // continuous Hermite path, then the stack closes flat at centre for the brand hand-off.
 import { seg, ease, lerp, clamp, rgba, layoutText, layerCtl, roundRectPath } from '../util.js';
 import { W, H, makeCam, toView, dotFloor, drawLines } from '../fx.js';
-import { CARD, CAM_D, drawLocalizeBg } from './shared.js';
+import { CARD, CAM_D, drawLocalizeBg, drawFlowBg } from './shared.js';
 
 const D2R = Math.PI / 180;
 
@@ -61,9 +61,12 @@ export default {
     const D = CAM_D * sample(K, u, 'dist'), sx = sample(K, u, 'x');
     const cam = orbitCam(yaw, pitch, D);
 
-    ctx.fillStyle = pal.paper;
-    ctx.fillRect(0, 0, W, H);
-    drawLocalizeBg(ctx, P, 1 - seg(t, 0, 0.4));
+    if (prm.flowBg) drawFlowBg(ctx, P, S.gT, 1);
+    else {
+      ctx.fillStyle = pal.paper;
+      ctx.fillRect(0, 0, W, H);
+      drawLocalizeBg(ctx, P, 1 - seg(t, 0, 0.4));
+    }
     const dots = layerCtl(scene, 'dots');
     if (dots.visible) dotFloor(ctx, S.gT, { cam: makeCam({ z: 0 }), color: pal.blue, alpha: 0.26 * dots.opacity, speed: 260, y: 430, spacing: 120, composite: 'source-over' });
 
