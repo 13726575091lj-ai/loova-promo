@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>罗健 简历</title>
+<style>
+  @font-face { font-family: "SC"; src: url(fonts/NotoSansSC.ttf); font-weight: 100 900; }
+  @font-face { font-family: "SerifSC"; src: url(fonts/NotoSerifSC.ttf); font-weight: 200 900; }
+  @font-face { font-family: "Caveat"; src: url(fonts/caveat.ttf); font-weight: 400 700; }
+  @font-face { font-family: "Mono", "SC"; src: url(fonts/dm-mono.ttf); }
+  :root { --paper: #F4EFE4; --orange: #E8622A; --ink: #1F1B16; --mute: #7A7266; --line: #DDD4C2; }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 210mm; height: 297mm; }
+  body { background: var(--paper); font-family: "SC", sans-serif; color: var(--ink); font-size: 10pt; line-height: 1.65;
+         -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { position: relative; width: 210mm; height: 297mm; padding: 18mm 18mm 14mm; overflow: hidden; }
+
+  /* decorative */
+  .blob { position: absolute; right: -34mm; top: -34mm; width: 92mm; height: 92mm; border-radius: 50%; background: var(--orange); }
+  .ring { position: absolute; right: 30mm; top: 40mm; width: 16mm; height: 16mm; border-radius: 50%; border: 1.6px solid var(--orange); }
+  .dots { position: absolute; left: 0; bottom: 0; width: 60mm; height: 26mm;
+          background-image: radial-gradient(var(--orange) 1.1px, transparent 1.3px); background-size: 4.5mm 4.5mm; opacity: .35; }
+
+  /* header */
+  header { position: relative; margin-bottom: 13mm; }
+  .hi { font-family: "Caveat"; font-weight: 700; font-size: 22pt; color: var(--orange); transform: rotate(-4deg); display: inline-block; margin-bottom: 1mm; }
+  h1 { font-family: "SerifSC"; font-weight: 900; font-size: 44pt; letter-spacing: .14em; line-height: 1.05; }
+  .roles { margin-top: 3.5mm; display: flex; gap: 2mm; }
+  .roles span { border: 1.4px solid var(--ink); border-radius: 20px; padding: .3mm 3.4mm; font-size: 9.6pt; font-weight: 600; }
+  .roles span:first-child { background: var(--ink); color: var(--paper); }
+  .contact { margin-top: 4.5mm; display: flex; flex-wrap: wrap; gap: 1mm 6mm; font-size: 9.4pt; color: var(--mute); }
+  .contact b { font-family: "Mono", "SC"; font-weight: 400; font-size: 7.6pt; color: var(--orange); letter-spacing: .12em; margin-right: 1.6mm; }
+
+  /* sections */
+  section { display: grid; grid-template-columns: 34mm 1fr; gap: 0 6mm; padding: 6.5mm 0; border-top: 1px solid var(--line); }
+  section > h2 { font-size: 12pt; font-weight: 800; line-height: 1.3; }
+  section > h2 small { display: block; font-family: "Mono", "SC"; font-weight: 400; font-size: 7.4pt; letter-spacing: .2em; color: var(--orange); margin-top: .8mm; }
+  .item + .item { margin-top: 4.5mm; }
+  .item .top { display: flex; align-items: baseline; gap: 2.4mm; }
+  .item .co { font-size: 11.2pt; font-weight: 800; }
+  .item .pos { font-size: 9.6pt; color: var(--orange); font-weight: 600; }
+  .item .date { margin-left: auto; font-family: "Mono", "SC"; font-size: 8.4pt; color: var(--mute); }
+  ul { list-style: none; margin-top: 1.4mm; }
+  li { position: relative; padding-left: 4mm; margin-bottom: 1mm; }
+  li::before { content: ""; position: absolute; left: 0; top: 2.5mm; width: 1.8mm; height: 1.8mm; border-radius: 50%; border: 1.4px solid var(--orange); }
+  li b { font-weight: 700; }
+  .num { color: var(--orange); font-weight: 800; }
+
+  .stats { display: flex; gap: 3mm; margin-top: 2.6mm; }
+  .stats div { background: #fff; border-radius: 3mm; padding: 2mm 3.6mm; min-width: 30mm; }
+  .stats strong { display: block; font-family: "SerifSC"; font-weight: 900; font-size: 17pt; color: var(--orange); line-height: 1.15; }
+  .stats span { font-size: 8.2pt; color: var(--mute); }
+
+  .web { display: flex; gap: 5mm; align-items: center; }
+  .web img { width: 22mm; height: 22mm; background: #fff; padding: 1.6mm; border-radius: 2.4mm; flex: none; }
+  .web a { color: var(--ink); font-weight: 700; text-decoration: none; border-bottom: 1.6px solid var(--orange); }
+  .web p { color: var(--mute); font-size: 9pt; margin-top: 1mm; }
+
+  .edu > div > div { display: grid; grid-template-columns: 32mm 1fr auto; align-items: baseline; }
+  .edu > div > div + div { margin-top: 1.6mm; }
+  .edu b { font-size: 10.6pt; }
+  .edu span { color: var(--mute); font-size: 9.4pt; }
+  .edu i { font-style: normal; font-family: "Mono", "SC"; font-size: 8.4pt; color: var(--mute); }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 2mm; }
+  .tags span { background: #fff; border-radius: 20px; padding: .4mm 3.4mm; font-size: 9.4pt; font-weight: 600; }
+  .tags span.o { background: var(--orange); color: #fff; }
+  .skills p { margin-top: 2.4mm; color: var(--mute); font-size: 9.2pt; }
+
+  footer { position: absolute; right: 18mm; bottom: 12mm; font-family: "Caveat"; font-weight: 700; font-size: 18pt; color: var(--orange); transform: rotate(-4deg); }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="blob"></div><div class="ring"></div><div class="dots"></div>
+
+  <header>
+    <span class="hi">Hello, I'm</span>
+    <h1>罗健</h1>
+    <div class="roles"><span>AI 内容运营</span><span>AI 动画制作</span><span>内容设计师</span></div>
+    <div class="contact">
+      <span><b>TEL</b>137-2657-5091</span>
+      <span><b>MAIL</b>13726575091lj@gmail.com</span>
+      <span><b>CITY</b>广州 / 上海 / 深圳 / 成都</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>工作经历<small>EXPERIENCE</small></h2>
+    <div>
+      <div class="item">
+        <div class="top"><span class="co">LOOVA AI</span><span class="pos">AI 内容运营</span><span class="date">2026.08 — 至今</span></div>
+        <ul>
+          <li><b>AI 动画长片：</b>独立完成编剧、制作、剪辑全流程，每周产出 <span class="num">1</span> 部 <span class="num">2–4</span> 分钟动画。</li>
+          <li><b>社媒短视频：</b>追踪 AI 热点，制作 X / YouTube Shorts 内容。</li>
+          <li><b>新模型发布：</b>为新上线的 AI 模型制作模型介绍与 Motion「What's New」视频。</li>
+          <li><b>网站物料：</b>负责 loova.ai 网站 MCP、Skill 页面及 Banner 等视觉物料。</li>
+        </ul>
+        <div class="stats">
+          <div><strong>27w</strong><span>X 平台最高播放</span></div>
+          <div><strong>12w</strong><span>YouTube 最高播放</span></div>
+          <div><strong>每周 1 部</strong><span>2–4 分钟动画长片</span></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="top"><span class="co">旺财科技</span><span class="pos">AIGC 内容创作</span><span class="date">2026.04 — 2026.08</span></div>
+        <ul>
+          <li>参与以色列海外客户 <span class="num">5</span> 个 AIGC 项目，及快手 <span class="num">7000 万</span>粉丝级达人 AI 短剧项目，负责剧本拆解、分镜与 AI 内容生成。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>作品集<small>PORTFOLIO</small></h2>
+    <div class="web">
+      <img src="qr2.svg" alt="作品集二维码">
+      <div>
+        <a href="https://b2-luojian-films.b2qq.chatgpt.site/">b2-luojian-films.b2qq.chatgpt.site</a>
+        <p>动画音乐影像 · 动画短片 · 真人影像<br>代表作：CANDY MUTINY / ASHBOUND / MY BLOCK / MOM'S HOME</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="edu">
+    <h2>教育经历<small>EDUCATION</small></h2>
+    <div>
+      <div><b>广州新华学院</b><span>网络与新媒体 · 艺术学院</span><i>2024.09 — 2026.06</i></div>
+      <div><b>城建大学</b><span>新媒体策划 · 人文学院</span><i>2021.09 — 2024.06</i></div>
+    </div>
+  </section>
+
+  <section class="skills">
+    <h2>专业技能<small>SKILLS</small></h2>
+    <div>
+      <div class="tags"><span class="o">Seedance</span><span class="o">Midjourney</span><span class="o">Nano Banana</span><span>Claude</span><span>Codex</span></div>
+      <p>AI 动画编剧与制作 · 视频剪辑 · 热点选题 · 网站视觉物料设计</p>
+    </div>
+  </section>
+
+  <footer>Stay curious.</footer>
+</div>
+</body>
+</html>
