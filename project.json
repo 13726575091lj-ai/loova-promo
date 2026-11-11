@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "LOOVA — Seedream 5.5 launch film (10 s, runway open)",
+    "title": "LOOVA — Seedream 5.5 launch film (12 s, v3 white)",
     "width": 1920,
     "height": 1080,
     "fps": 30,
@@ -42,21 +42,18 @@
   "scenes": [
     {
       "id": "open",
-      "type": "open",
-      "duration": 2.0,
+      "type": "open3",
+      "duration": 2.2,
       "enabled": true,
       "params": {
         "line1": "SEEDREAM",
         "line2": "5.5",
-        "clipIn": 0.8,
-        "playbackRate": 1.0,
-        "darken": 0.62,
-        "darkenAt": 0.45,
-        "row1At": 0.5,
-        "line1At": 0.58,
-        "line2At": 0.86,
-        "letterStagger": 0.032,
-        "exitLen": 0.34
+        "clipIn": 0,
+        "playbackRate": 1,
+        "wash": 0.6,
+        "enterAt": 0.55,
+        "flyLen": 0.42,
+        "exitLen": 0.45
       },
       "layers": {
         "footage": {
@@ -91,37 +88,21 @@
     },
     {
       "id": "slot",
-      "type": "slot",
+      "type": "slot3",
       "duration": 1.75,
       "enabled": true,
       "params": {
-        "header": "IMAGE MODELS ON LOOVA",
         "items": [
           "IMAGE 2.6",
           "SEEDREAM 5.0 PRO",
-          "IMAGE 2.6",
-          "SEEDREAM 5.0 PRO"
+          "SOUL 2.0"
         ],
         "final": "SEEDREAM 5.5",
-        "badge": "NEW",
-        "spinRows": 3,
-        "landAt": 0.35,
-        "dotSpacing": 64,
-        "dotRadius": 9,
-        "dotStrength": 0.3,
-        "revealLen": 0.55
+        "spinRows": 9,
+        "landAt": 0.36,
+        "exitLen": 0.42
       },
       "layers": {
-        "dots": {
-          "visible": true,
-          "opacity": 1
-        },
-        "header": {
-          "visible": false,
-          "scale": 1,
-          "x": 0,
-          "y": 0
-        },
         "reel": {
           "visible": true,
           "scale": 1,
@@ -137,9 +118,40 @@
       }
     },
     {
+      "id": "drag",
+      "type": "drag",
+      "duration": 1.15,
+      "enabled": true,
+      "params": {
+        "dropAt": 0.55,
+        "buildAt": 0.6,
+        "buildLen": 0.3,
+        "glideLen": 0.3,
+        "revealLen": 0.32
+      },
+      "layers": {
+        "subject": {
+          "visible": true,
+          "scale": 1,
+          "x": 0,
+          "y": 0
+        },
+        "selection": {
+          "visible": true,
+          "scale": 1,
+          "x": 0,
+          "y": 0
+        },
+        "cursor": {
+          "visible": true,
+          "opacity": 1
+        }
+      }
+    },
+    {
       "id": "localize",
       "type": "localize",
-      "duration": 4.4,
+      "duration": 4.2,
       "enabled": true,
       "params": {
         "header": "ONE POSTER. EVERY MARKET.",
@@ -185,10 +197,10 @@
             "weight": 1
           }
         ],
-        "swing": 0.21,
+        "swing": 0.18,
         "holdMode": "auto",
-        "exit": 0.35,
-        "panelIn": 0.25
+        "exit": 0.3,
+        "panelIn": 0.22
       },
       "layers": {
         "dots": {
@@ -215,14 +227,28 @@
     },
     {
       "id": "layers",
-      "type": "layers",
-      "duration": 0.8,
+      "type": "layers3",
+      "duration": 1.65,
       "enabled": true,
       "params": {
-        "caption": "EVERY LAYER. EDITABLE.",
-        "separation": 200,
-        "yawDeg": -38,
-        "pitchDeg": 9
+        "separation": 190,
+        "angles": [
+          [
+            0.22,
+            -38,
+            10
+          ],
+          [
+            0.48,
+            34,
+            -7
+          ],
+          [
+            0.72,
+            -14,
+            30
+          ]
+        ]
       },
       "layers": {
         "dots": {
@@ -236,12 +262,6 @@
         "labels": {
           "visible": true,
           "opacity": 1
-        },
-        "caption": {
-          "visible": false,
-          "scale": 1,
-          "x": 0,
-          "y": 0
         }
       }
     },
@@ -253,7 +273,8 @@
       "params": {
         "tagline": "SEEDANCE 5.5  ·  SEEDREAM 5.5",
         "sub": "",
-        "iconSize": 190
+        "iconSize": 230,
+        "light": true
       },
       "layers": {
         "particles": {
@@ -425,7 +446,13 @@
           "color": "paper",
           "maxWidth": 420
         }
-      }
+      },
+      "subjectBox": [
+        98,
+        153,
+        534,
+        870
+      ]
     }
   },
   "logo": {

@@ -17,13 +17,14 @@ export default {
     const iconS = prm.iconSize ?? 190;
     const LK = lockupLayout(P, assets.logo, iconS);
 
-    ctx.fillStyle = pal.bg;
+    const light = !!prm.light;
+    ctx.fillStyle = light ? pal.paper : pal.bg;
     ctx.fillRect(0, 0, W, H);
     const glowK = seg(t, T.land - 0.1, T.land + 0.6);
     const g = ctx.createRadialGradient(W / 2, LK.cy, 0, W / 2, LK.cy, 950);
     g.addColorStop(0, rgba(pal.cyan, 0.22 * glowK));
     g.addColorStop(0.5, rgba(pal.mint, 0.06 * glowK));
-    g.addColorStop(1, rgba(pal.bg, 0));
+    g.addColorStop(1, rgba(light ? pal.paper : pal.bg, 0));
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, W, H);
 
@@ -35,7 +36,8 @@ export default {
         particleSphere(ctx, t, { x: LK.icon.x + iconS / 2, y: LK.cy, r: iconS * 0.7, n: 700, seed: 21, colorA: pal.mint, colorB: pal.cyan, explode: ex * 1.6, alpha: (1 - ex) * part.opacity, spin: 0.1 });
     }
 
-    const push = 1 + 0.03 * seg(t, T.land, dur);
+    // slow push plus a breathing pulse once the mark has landed
+    const push = 1 + 0.03 * seg(t, T.land, dur) + (light ? 0.018 * seg(t, T.land + 0.1, T.land + 0.3) * Math.sin((t - T.land) * 7) : 0);
     ctx.save();
     ctx.translate(W / 2, H / 2);
     ctx.scale(push, push);
@@ -82,10 +84,10 @@ export default {
         ctx.rect(LK.word.x - 10, LK.word.y - 40, (LK.word.w + 30) * wk, LK.word.h + 80);
         ctx.clip();
         ctx.translate(-(1 - wk) * 60, 0);
-        drawWordmark(ctx, LK.word.x, LK.word.y, LK.word.h, P, assets.logo);
+        drawWordmark(ctx, LK.word.x, LK.word.y, LK.word.h, P, assets.logo, light ? flowInk(ctx, LK, t, P) : undefined);
         // glint
         const gl = seg(t, T.wordEnd + 0.25, T.wordEnd + 0.95);
-        if (gl > 0 && gl < 1) {
+        if (!light && gl > 0 && gl < 1) {
           const gx = lerp(LK.word.x - 200, LK.word.x + LK.word.w + 200, gl);
           const sg = ctx.createLinearGradient(gx - 90, 0, gx + 90, 0);
           sg.addColorStop(0, 'rgba(255,255,255,0)');
@@ -123,7 +125,7 @@ export default {
       S.report('brand.sub', { x: W / 2 - SL.width / 2, y: by + bh + 58 - SL.capH, w: SL.width, h: SL.capH }, a, SL.fits);
     });
     ctx.restore();
-    vignette(ctx, 0.4);
+    if (!light) vignette(ctx, 0.4);
   },
 
   cues(scene, P, dur) {
@@ -147,3 +149,19 @@ export default {
     ];
   },
 };
+
+/** light theme wordmark: ink with a mint→cyan band that keeps flowing across the letters */
+function flowInk(ctx, LK, t, P) {
+  const m = P.palette[P.brand.gradientStart] || '#00F5A0', c = P.palette[P.brand.gradientEnd] || '#00D9F5';
+  const w = LK.word.w, x0 = LK.word.x;
+  const f = ((t * 0.9) % 1) * 2 - 0.5;
+  const g = ctx.createLinearGradient(x0 - w * 0.5, 0, x0 + w * 1.5, 0);
+  const at = (p) => Math.max(0, Math.min(1, p));
+  g.addColorStop(0, '#0B0B0C');
+  g.addColorStop(at(f / 2 + 0.1), '#0B0B0C');
+  g.addColorStop(at(f / 2 + 0.2), m);
+  g.addColorStop(at(f / 2 + 0.28), c);
+  g.addColorStop(at(f / 2 + 0.38), '#0B0B0C');
+  g.addColorStop(1, '#0B0B0C');
+  return g;
+}

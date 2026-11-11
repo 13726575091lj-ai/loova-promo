@@ -1,6 +1,7 @@
-import fs from 'node:fs';
+import fs from 'fs';
 import { collectHolds, resolveTimeline } from '../src/timeline.js';
 import { minHold } from '../src/util.js';
-const p = JSON.parse(fs.readFileSync('project.json','utf8'));
-const tl=resolveTimeline(p); console.log('total', tl.total, tl.scenes.map(s=>`${s.id}@${s.start.toFixed(2)}`).join(' '));
-for (const h of collectHolds(p)) console.log(h.label.padEnd(18), (h.end-h.start).toFixed(3), minHold(h.text).toFixed(3), h.end-h.start>=minHold(h.text)?'ok':'FAIL');
+const P = JSON.parse(fs.readFileSync(process.argv[2] || 'project.json'));
+const tl = resolveTimeline(P);
+console.log('total', tl.total.toFixed(3));
+for (const h of collectHolds(P, tl)) { const d = h.end - h.start, m = minHold(h.text); console.log((d >= m ? 'ok  ' : 'FAIL'), h.label.padEnd(18), d.toFixed(3), '>=', m.toFixed(3)); }

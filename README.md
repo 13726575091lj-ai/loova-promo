@@ -1,3 +1,26 @@
+# LOOVA — Seedream 5.5 launch film (v3, 12 s, all white)
+
+**Latest master: `LOOVA_12s_v3.mp4`** (1920×1080, 30 fps, 12.00 s, H.264 + AAC, 8-sample motion blur).
+Smaller copy: `LOOVA_12s_v3_small.mp4`. QC, stems, project snapshot and contact sheet: `dist/v3/`.
+v1 / v2 files are unchanged; the v2 timeline is kept as `project_10s_v2.json`.
+Reference studied: `参考222323.mp4` (per-letter 3D fly-in / fly-out title, curved pink reel).
+
+| # | Scene (type) | Time | What happens | Hand-off |
+|---|---|---|---|---|
+| 1 | `open` (`open3`) | 0.00–2.20 | Runway clip from 0 s. Glitch slices + colour fringe + light-leak sweep at both footage cuts (blonde→red, red→blue). Footage washes to white; LOOVA / **SEEDREAM** / **5.5** letters fly in from the lens with 3D extrusion trails, ring + speed-line burst on landing, breathing scale wave while held, 5.5 in a flowing mint gradient | Every letter flies back out through the lens; frame goes white |
+| 2 | `slot` (`slot3`) | 2.20–3.95 | White. Pink curved cylinder reel IMAGE 2.6 / SEEDREAM 5.0 PRO / SOUL 2.0 spins fast and locks on **SEEDREAM 5.5**; wobble + breathing; pointers turn into dots and fly out | Pink polka dots grow from the word |
+| 3 | `drag` | 3.95–5.10 | Dots shrink back; cursor drags the blue-haired model to centre (selection box, snap guides); the poster grows around her | Card glides to the localize slot |
+| 4 | `localize` | 5.10–9.30 | White. Flags + language on the left, TH → JP → ES → KR → **US English** | English card to centre |
+| 5 | `layers` (`layers3`) | 9.30–10.95 | English poster splits into 6 layers; camera visits three angles (left ¾, right ¾, high) | Closes flat |
+| 6 | `brand` | 10.95–12.00 | Poster → LOOVA icon, wordmark with flowing mint band, breathing; white | — |
+
+v3 QC (`dist/v3/qc.md`): 0 unplanned motion spikes, 0 global flicker, 0 text overflow / clipping,
+10/10 text holds readable, peak −0.9 dBFS, 0 clipped samples, A/V offset 0 ms, SFX cues within one frame.
+"Block flicker" reports 10 frames (CHECK): all inside the designed fly-through, the reel spin blur and
+the card swings, where the motion blur samples stack; no strobing particles.
+
+---
+
 # LOOVA — Seedream 5.5 launch film (v2, 10 s, runway open)
 
 **Latest master: `LOOVA_10s_v2.mp4`** (1920×1080, 30 fps, 10.00 s, H.264 + AAC, 8-sample motion blur).
