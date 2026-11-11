@@ -1,0 +1,463 @@
+{
+  "container": {
+    "width": 1920,
+    "height": 1080,
+    "duration": 10.0,
+    "fps": 30.0,
+    "audio": true,
+    "audioDesc": "aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 270 kb/s (default)"
+  },
+  "frames": 300,
+  "motion": {
+    "maxChange": 68.67,
+    "meanChange": 5.67,
+    "jumps": [
+      {
+        "frame": 90,
+        "t": 3.0,
+        "scene": "slot",
+        "change": 68.67,
+        "local": 7.22,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 127,
+        "t": 4.233,
+        "scene": "localize",
+        "change": 22.5,
+        "local": 1.5,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 128,
+        "t": 4.267,
+        "scene": "localize",
+        "change": 25.35,
+        "local": 1.5,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 129,
+        "t": 4.3,
+        "scene": "localize",
+        "change": 23.87,
+        "local": 1.5,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 150,
+        "t": 5.0,
+        "scene": "localize",
+        "change": 21.66,
+        "local": 1.32,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 151,
+        "t": 5.033,
+        "scene": "localize",
+        "change": 25.06,
+        "local": 1.32,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 152,
+        "t": 5.067,
+        "scene": "localize",
+        "change": 24.35,
+        "local": 1.32,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 153,
+        "t": 5.1,
+        "scene": "localize",
+        "change": 19.06,
+        "local": 1.32,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 176,
+        "t": 5.867,
+        "scene": "localize",
+        "change": 21.46,
+        "local": 1.34,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 177,
+        "t": 5.9,
+        "scene": "localize",
+        "change": 25.39,
+        "local": 1.34,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 178,
+        "t": 5.933,
+        "scene": "localize",
+        "change": 24.86,
+        "local": 1.34,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 179,
+        "t": 5.967,
+        "scene": "localize",
+        "change": 19.92,
+        "local": 1.34,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 199,
+        "t": 6.633,
+        "scene": "localize",
+        "change": 20.2,
+        "local": 1.58,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 200,
+        "t": 6.667,
+        "scene": "localize",
+        "change": 24.59,
+        "local": 1.58,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 201,
+        "t": 6.7,
+        "scene": "localize",
+        "change": 24.89,
+        "local": 1.58,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 202,
+        "t": 6.733,
+        "scene": "localize",
+        "change": 19.92,
+        "local": 1.58,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      }
+    ],
+    "unexpectedJumps": 0
+  },
+  "flicker": {
+    "global": [],
+    "blockFrames": [
+      {
+        "frame": 17,
+        "t": 0.567,
+        "scene": "title",
+        "blocks": 3,
+        "where": [
+          [
+            10,
+            3
+          ],
+          [
+            11,
+            4
+          ],
+          [
+            12,
+            4
+          ]
+        ]
+      }
+    ],
+    "blockFrameCount": 1
+  },
+  "text": {
+    "overflowFrames": 0,
+    "clippedFrames": 0,
+    "examples": [],
+    "holds": [
+      {
+        "label": "title.brandRow",
+        "layer": "brandRow",
+        "text": "LOOVA",
+        "start": 0.8500000000000001,
+        "end": 1.52,
+        "scene": "title",
+        "duration": 0.67,
+        "required": 0.575,
+        "ok": true
+      },
+      {
+        "label": "title.line1",
+        "layer": "line1",
+        "text": "SEEDANCE",
+        "start": 0.7514285714285714,
+        "end": 1.52,
+        "scene": "title",
+        "duration": 0.769,
+        "required": 0.65,
+        "ok": true
+      },
+      {
+        "label": "title.line2",
+        "layer": "line2",
+        "text": "5.5",
+        "start": 0.8702857142857143,
+        "end": 1.52,
+        "scene": "title",
+        "duration": 0.65,
+        "required": 0.525,
+        "ok": true
+      },
+      {
+        "label": "slot.final",
+        "layer": "reel",
+        "text": "SEEDREAM 5.5",
+        "start": 2.1750000000000003,
+        "end": 2.93,
+        "scene": "slot",
+        "duration": 0.755,
+        "required": 0.75,
+        "ok": true
+      },
+      {
+        "label": "localize.th",
+        "layer": "panel",
+        "text": "ภาษาไทย",
+        "start": 3.5100000000000002,
+        "end": 4.141111111111111,
+        "scene": "localize",
+        "duration": 0.631,
+        "required": 0.625,
+        "ok": true
+      },
+      {
+        "label": "localize.ja",
+        "layer": "panel",
+        "text": "日本語",
+        "start": 4.381111111111111,
+        "end": 4.912222222222223,
+        "scene": "localize",
+        "duration": 0.531,
+        "required": 0.525,
+        "ok": true
+      },
+      {
+        "label": "localize.es",
+        "layer": "panel",
+        "text": "Español",
+        "start": 5.152222222222223,
+        "end": 5.783333333333333,
+        "scene": "localize",
+        "duration": 0.631,
+        "required": 0.625,
+        "ok": true
+      },
+      {
+        "label": "localize.ko",
+        "layer": "panel",
+        "text": "한국어",
+        "start": 6.023333333333333,
+        "end": 6.554444444444445,
+        "scene": "localize",
+        "duration": 0.531,
+        "required": 0.525,
+        "ok": true
+      },
+      {
+        "label": "localize.en",
+        "layer": "panel",
+        "text": "English",
+        "start": 6.794444444444445,
+        "end": 7.45,
+        "scene": "localize",
+        "duration": 0.656,
+        "required": 0.625,
+        "ok": true
+      },
+      {
+        "label": "brand.lockup",
+        "layer": "lockup",
+        "text": "LOOVA",
+        "start": 9.328000000000001,
+        "end": 10,
+        "scene": "brand",
+        "duration": 0.672,
+        "required": 0.575,
+        "ok": true
+      }
+    ],
+    "posterWarnings": []
+  },
+  "audio": {
+    "peak": 0.8885,
+    "peakDb": -1.03,
+    "rmsDb": -14.43,
+    "clippedSamples": 0,
+    "sync": {
+      "cues": 7,
+      "medianAbsMs": 4.0,
+      "p95AbsMs": 32.199999999999996,
+      "maxAbsMs": 34.0,
+      "within20ms": 5,
+      "maskedCues": [
+        {
+          "t": 0.4,
+          "type": "impact",
+          "scene": "title",
+          "offsetMs": -20.0,
+          "strengthDb": 1.9
+        },
+        {
+          "t": 0.87,
+          "type": "impact",
+          "scene": "title",
+          "offsetMs": 4.0,
+          "strengthDb": 5.4
+        },
+        {
+          "t": 2.275,
+          "type": "pop",
+          "scene": "slot",
+          "offsetMs": 0.0,
+          "strengthDb": 2.8
+        },
+        {
+          "t": 4.261,
+          "type": "tick",
+          "scene": "localize",
+          "offsetMs": 0.0,
+          "strengthDb": 3.7
+        },
+        {
+          "t": 4.361,
+          "type": "pop",
+          "scene": "localize",
+          "offsetMs": 28.0,
+          "strengthDb": 2.2
+        },
+        {
+          "t": 5.032,
+          "type": "tick",
+          "scene": "localize",
+          "offsetMs": -30.0,
+          "strengthDb": 2.6
+        },
+        {
+          "t": 5.132,
+          "type": "pop",
+          "scene": "localize",
+          "offsetMs": 30.0,
+          "strengthDb": 1.4
+        },
+        {
+          "t": 5.903,
+          "type": "tick",
+          "scene": "localize",
+          "offsetMs": 2.0,
+          "strengthDb": 2.7
+        },
+        {
+          "t": 6.003,
+          "type": "pop",
+          "scene": "localize",
+          "offsetMs": 12.0,
+          "strengthDb": 2.8
+        },
+        {
+          "t": 6.674,
+          "type": "tick",
+          "scene": "localize",
+          "offsetMs": 0.0,
+          "strengthDb": 3.8
+        },
+        {
+          "t": 6.774,
+          "type": "pop",
+          "scene": "localize",
+          "offsetMs": -16.0,
+          "strengthDb": 2.1
+        },
+        {
+          "t": 9.088,
+          "type": "impact",
+          "scene": "brand",
+          "offsetMs": 4.0,
+          "strengthDb": 2.8
+        }
+      ],
+      "muxOffsetMs": 0.0,
+      "stem": {
+        "cues": 19,
+        "maxAbsMs": 18.0,
+        "within10ms": 14,
+        "withinFrame": 19
+      }
+    },
+    "cueSync": [
+      {
+        "t": 0.751,
+        "type": "impact",
+        "scene": "title",
+        "offsetMs": 0.0,
+        "strengthDb": 16.1
+      },
+      {
+        "t": 1.734,
+        "type": "tick",
+        "scene": "slot",
+        "offsetMs": 0.0,
+        "strengthDb": 13.6
+      },
+      {
+        "t": 1.81,
+        "type": "tick",
+        "scene": "slot",
+        "offsetMs": 0.0,
+        "strengthDb": 17.9
+      },
+      {
+        "t": 1.922,
+        "type": "tick",
+        "scene": "slot",
+        "offsetMs": 28.0,
+        "strengthDb": 24.0
+      },
+      {
+        "t": 2.075,
+        "type": "lock",
+        "scene": "slot",
+        "offsetMs": 4.0,
+        "strengthDb": 11.6
+      },
+      {
+        "t": 7.85,
+        "type": "subdrop",
+        "scene": "layers",
+        "offsetMs": 12.0,
+        "strengthDb": 6.2
+      },
+      {
+        "t": 9.256,
+        "type": "pop",
+        "scene": "brand",
+        "offsetMs": 34.0,
+        "strengthDb": 9.2
+      }
+    ]
+  }
+}

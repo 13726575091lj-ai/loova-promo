@@ -1,0 +1,605 @@
+{
+  "project": "project.json",
+  "total": 10,
+  "fps": 30,
+  "frames": 300,
+  "timeline": [
+    {
+      "id": "intro",
+      "type": "intro",
+      "start": 0,
+      "end": 0.4,
+      "dur": 0.4
+    },
+    {
+      "id": "title",
+      "type": "title",
+      "start": 0.4,
+      "end": 1.7000000000000002,
+      "dur": 1.3
+    },
+    {
+      "id": "slot",
+      "type": "slot",
+      "start": 1.7000000000000002,
+      "end": 3.2,
+      "dur": 1.5
+    },
+    {
+      "id": "localize",
+      "type": "localize",
+      "start": 3.2,
+      "end": 7.8,
+      "dur": 4.6
+    },
+    {
+      "id": "layers",
+      "type": "layers",
+      "start": 7.8,
+      "end": 8.8,
+      "dur": 1
+    },
+    {
+      "id": "brand",
+      "type": "brand",
+      "start": 8.8,
+      "end": 10,
+      "dur": 1.2
+    }
+  ],
+  "cues": [
+    {
+      "t": 0,
+      "type": "section",
+      "pattern": "intro",
+      "len": 0.4,
+      "scene": "intro",
+      "local": 0
+    },
+    {
+      "t": 0.05,
+      "type": "riser",
+      "len": 0.35000000000000003,
+      "gain": 0.55,
+      "scene": "intro",
+      "local": 0.05
+    },
+    {
+      "t": 0.4,
+      "type": "impact",
+      "gain": 0.55,
+      "size": 0.6,
+      "scene": "title",
+      "local": 0
+    },
+    {
+      "t": 0.45142857142857146,
+      "type": "whoosh",
+      "len": 0.3,
+      "gain": 0.5,
+      "pan": -0.3,
+      "scene": "title",
+      "local": 0.051428571428571435
+    },
+    {
+      "t": 0.7514285714285714,
+      "type": "impact",
+      "gain": 0.9,
+      "size": 0.9,
+      "scene": "title",
+      "local": 0.3514285714285714
+    },
+    {
+      "t": 0.7514285714285714,
+      "type": "section",
+      "pattern": "drop",
+      "len": 0.6185714285714285,
+      "scene": "title",
+      "local": 0.3514285714285714
+    },
+    {
+      "t": 0.8014285714285714,
+      "type": "whoosh",
+      "len": 0.3,
+      "gain": 0.5,
+      "pan": 0.3,
+      "scene": "title",
+      "local": 0.4014285714285714
+    },
+    {
+      "t": 0.8702857142857143,
+      "type": "impact",
+      "gain": 1,
+      "size": 1,
+      "scene": "title",
+      "local": 0.4702857142857143
+    },
+    {
+      "t": 1.37,
+      "type": "sweep",
+      "len": 0.33000000000000007,
+      "gain": 0.75,
+      "scene": "title",
+      "local": 0.97
+    },
+    {
+      "t": 1.37,
+      "type": "section",
+      "pattern": "fill",
+      "len": 0.33000000000000007,
+      "scene": "title",
+      "local": 0.97
+    },
+    {
+      "t": 1.4302857142857142,
+      "type": "shimmer",
+      "len": 0.8,
+      "gain": 0.35,
+      "scene": "title",
+      "local": 1.0302857142857142
+    },
+    {
+      "t": 1.7000000000000002,
+      "type": "section",
+      "pattern": "spin",
+      "len": 0.375,
+      "scene": "slot",
+      "local": 0
+    },
+    {
+      "t": 1.7340000000000002,
+      "type": "tick",
+      "gain": 0.37266666666666665,
+      "pan": 0,
+      "scene": "slot",
+      "local": 0.034000000000000016
+    },
+    {
+      "t": 1.8100000000000003,
+      "type": "tick",
+      "gain": 0.42333333333333334,
+      "pan": 0,
+      "scene": "slot",
+      "local": 0.11000000000000008
+    },
+    {
+      "t": 1.9220000000000004,
+      "type": "tick",
+      "gain": 0.4980000000000001,
+      "pan": 0,
+      "scene": "slot",
+      "local": 0.22200000000000017
+    },
+    {
+      "t": 2.075,
+      "type": "lock",
+      "gain": 0.9,
+      "scene": "slot",
+      "local": 0.375
+    },
+    {
+      "t": 2.075,
+      "type": "impact",
+      "gain": 0.55,
+      "size": 0.5,
+      "scene": "slot",
+      "local": 0.375
+    },
+    {
+      "t": 2.075,
+      "type": "section",
+      "pattern": "groove",
+      "len": 0.7050000000000001,
+      "scene": "slot",
+      "local": 0.375
+    },
+    {
+      "t": 2.1050000000000004,
+      "type": "ding",
+      "gain": 0.55,
+      "scene": "slot",
+      "local": 0.405
+    },
+    {
+      "t": 2.2750000000000004,
+      "type": "pop",
+      "gain": 0.5,
+      "scene": "slot",
+      "local": 0.575
+    },
+    {
+      "t": 2.7800000000000002,
+      "type": "whoosh",
+      "len": 0.5199999999999999,
+      "gain": 0.6,
+      "pan": 0.4,
+      "scene": "slot",
+      "local": 1.08
+    },
+    {
+      "t": 2.7800000000000002,
+      "type": "section",
+      "pattern": "fill",
+      "len": 0.41999999999999993,
+      "scene": "slot",
+      "local": 1.08
+    },
+    {
+      "t": 3.2,
+      "type": "section",
+      "pattern": "groove",
+      "len": 4.25,
+      "chord": 0,
+      "scene": "localize",
+      "local": 0
+    },
+    {
+      "t": 3.35,
+      "type": "swish",
+      "len": 0.5,
+      "gain": 0.35,
+      "pan": -0.6,
+      "scene": "localize",
+      "local": 0.15
+    },
+    {
+      "t": 4.141111111111111,
+      "type": "whoosh",
+      "len": 0.29,
+      "gain": 0.5,
+      "pan": 0.5,
+      "scene": "localize",
+      "local": 0.9411111111111111
+    },
+    {
+      "t": 4.261111111111111,
+      "type": "tick",
+      "gain": 0.6,
+      "pan": -0.4,
+      "scene": "localize",
+      "local": 1.0611111111111111
+    },
+    {
+      "t": 4.361111111111111,
+      "type": "pop",
+      "gain": 0.35,
+      "scene": "localize",
+      "local": 1.161111111111111
+    },
+    {
+      "t": 4.381111111111111,
+      "type": "chord",
+      "chord": 1,
+      "scene": "localize",
+      "local": 1.181111111111111
+    },
+    {
+      "t": 4.912222222222223,
+      "type": "whoosh",
+      "len": 0.29,
+      "gain": 0.5,
+      "pan": 0.5,
+      "scene": "localize",
+      "local": 1.712222222222222
+    },
+    {
+      "t": 5.032222222222222,
+      "type": "tick",
+      "gain": 0.6,
+      "pan": -0.4,
+      "scene": "localize",
+      "local": 1.8322222222222222
+    },
+    {
+      "t": 5.1322222222222225,
+      "type": "pop",
+      "gain": 0.35,
+      "scene": "localize",
+      "local": 1.9322222222222223
+    },
+    {
+      "t": 5.152222222222223,
+      "type": "chord",
+      "chord": 2,
+      "scene": "localize",
+      "local": 1.9522222222222223
+    },
+    {
+      "t": 5.783333333333333,
+      "type": "whoosh",
+      "len": 0.29,
+      "gain": 0.5,
+      "pan": 0.5,
+      "scene": "localize",
+      "local": 2.5833333333333335
+    },
+    {
+      "t": 5.903333333333334,
+      "type": "tick",
+      "gain": 0.6,
+      "pan": -0.4,
+      "scene": "localize",
+      "local": 2.7033333333333336
+    },
+    {
+      "t": 6.003333333333334,
+      "type": "pop",
+      "gain": 0.35,
+      "scene": "localize",
+      "local": 2.8033333333333337
+    },
+    {
+      "t": 6.023333333333333,
+      "type": "chord",
+      "chord": 3,
+      "scene": "localize",
+      "local": 2.8233333333333337
+    },
+    {
+      "t": 6.554444444444445,
+      "type": "whoosh",
+      "len": 0.29,
+      "gain": 0.5,
+      "pan": 0.5,
+      "scene": "localize",
+      "local": 3.354444444444445
+    },
+    {
+      "t": 6.674444444444445,
+      "type": "tick",
+      "gain": 0.6,
+      "pan": -0.4,
+      "scene": "localize",
+      "local": 3.474444444444445
+    },
+    {
+      "t": 6.774444444444445,
+      "type": "pop",
+      "gain": 0.6,
+      "scene": "localize",
+      "local": 3.574444444444445
+    },
+    {
+      "t": 6.794444444444445,
+      "type": "chord",
+      "chord": 4,
+      "scene": "localize",
+      "local": 3.594444444444445
+    },
+    {
+      "t": 7.45,
+      "type": "swish",
+      "len": 0.35,
+      "gain": 0.45,
+      "pan": 0,
+      "scene": "localize",
+      "local": 4.25
+    },
+    {
+      "t": 7.45,
+      "type": "section",
+      "pattern": "fill",
+      "len": 0.35,
+      "scene": "localize",
+      "local": 4.25
+    },
+    {
+      "t": 7.8,
+      "type": "section",
+      "pattern": "breakdown",
+      "len": 1,
+      "scene": "layers",
+      "local": 0
+    },
+    {
+      "t": 7.85,
+      "type": "subdrop",
+      "gain": 0.8,
+      "scene": "layers",
+      "local": 0.05
+    },
+    {
+      "t": 7.85,
+      "type": "swish",
+      "len": 0.2857142857142857,
+      "gain": 0.4,
+      "pan": -0.5,
+      "scene": "layers",
+      "local": 0.05
+    },
+    {
+      "t": 8.2,
+      "type": "glass",
+      "note": 0,
+      "gain": 0.32,
+      "scene": "layers",
+      "local": 0.4
+    },
+    {
+      "t": 8.2475,
+      "type": "suck",
+      "len": 0.5525,
+      "gain": 0.5,
+      "scene": "layers",
+      "local": 0.4475
+    },
+    {
+      "t": 8.26,
+      "type": "glass",
+      "note": 1,
+      "gain": 0.32,
+      "scene": "layers",
+      "local": 0.45999999999999996
+    },
+    {
+      "t": 8.32,
+      "type": "glass",
+      "note": 2,
+      "gain": 0.32,
+      "scene": "layers",
+      "local": 0.52
+    },
+    {
+      "t": 8.379999999999999,
+      "type": "glass",
+      "note": 3,
+      "gain": 0.32,
+      "scene": "layers",
+      "local": 0.58
+    },
+    {
+      "t": 8.44,
+      "type": "glass",
+      "note": 4,
+      "gain": 0.32,
+      "scene": "layers",
+      "local": 0.64
+    },
+    {
+      "t": 8.5,
+      "type": "glass",
+      "note": 5,
+      "gain": 0.32,
+      "scene": "layers",
+      "local": 0.7
+    },
+    {
+      "t": 8.8,
+      "type": "section",
+      "pattern": "pre",
+      "len": 0.288,
+      "scene": "brand",
+      "local": 0
+    },
+    {
+      "t": 8.8,
+      "type": "suck",
+      "len": 0.288,
+      "gain": 0.5,
+      "scene": "brand",
+      "local": 0
+    },
+    {
+      "t": 9.088000000000001,
+      "type": "impact",
+      "gain": 1,
+      "size": 1.2,
+      "scene": "brand",
+      "local": 0.288
+    },
+    {
+      "t": 9.088000000000001,
+      "type": "section",
+      "pattern": "finale",
+      "len": 0.9119999999999999,
+      "scene": "brand",
+      "local": 0.288
+    },
+    {
+      "t": 9.136000000000001,
+      "type": "shimmer",
+      "len": 0.9,
+      "gain": 0.45,
+      "scene": "brand",
+      "local": 0.33599999999999997
+    },
+    {
+      "t": 9.256,
+      "type": "pop",
+      "gain": 0.35,
+      "scene": "brand",
+      "local": 0.45599999999999996
+    },
+    {
+      "t": 9.578000000000001,
+      "type": "sparkle",
+      "gain": 0.35,
+      "scene": "brand",
+      "local": 0.778
+    }
+  ],
+  "holds": [
+    {
+      "label": "title.brandRow",
+      "layer": "brandRow",
+      "text": "LOOVA",
+      "start": 0.8500000000000001,
+      "end": 1.52,
+      "scene": "title"
+    },
+    {
+      "label": "title.line1",
+      "layer": "line1",
+      "text": "SEEDANCE",
+      "start": 0.7514285714285714,
+      "end": 1.52,
+      "scene": "title"
+    },
+    {
+      "label": "title.line2",
+      "layer": "line2",
+      "text": "5.5",
+      "start": 0.8702857142857143,
+      "end": 1.52,
+      "scene": "title"
+    },
+    {
+      "label": "slot.final",
+      "layer": "reel",
+      "text": "SEEDREAM 5.5",
+      "start": 2.1750000000000003,
+      "end": 2.93,
+      "scene": "slot"
+    },
+    {
+      "label": "localize.th",
+      "layer": "panel",
+      "text": "ภาษาไทย",
+      "start": 3.5100000000000002,
+      "end": 4.141111111111111,
+      "scene": "localize"
+    },
+    {
+      "label": "localize.ja",
+      "layer": "panel",
+      "text": "日本語",
+      "start": 4.381111111111111,
+      "end": 4.912222222222223,
+      "scene": "localize"
+    },
+    {
+      "label": "localize.es",
+      "layer": "panel",
+      "text": "Español",
+      "start": 5.152222222222223,
+      "end": 5.783333333333333,
+      "scene": "localize"
+    },
+    {
+      "label": "localize.ko",
+      "layer": "panel",
+      "text": "한국어",
+      "start": 6.023333333333333,
+      "end": 6.554444444444445,
+      "scene": "localize"
+    },
+    {
+      "label": "localize.en",
+      "layer": "panel",
+      "text": "English",
+      "start": 6.794444444444445,
+      "end": 7.45,
+      "scene": "localize"
+    },
+    {
+      "label": "brand.lockup",
+      "layer": "lockup",
+      "text": "LOOVA",
+      "start": 9.328000000000001,
+      "end": 10,
+      "scene": "brand"
+    }
+  ],
+  "frameIssues": [],
+  "posterWarnings": []
+}

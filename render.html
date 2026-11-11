@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>LOOVA render target</title>
+<style>html,body{margin:0;background:#000}canvas{display:block}</style></head>
+<body>
+<canvas id="c" width="1920" height="1080"></canvas>
+<script type="module">
+  // Headless render target driven by tools/render.mjs
+  import { Engine, loadAssets } from './src/engine.js';
+  let engine;
+  window.__init = async (project) => {
+    const assets = await loadAssets(project);
+    engine = new Engine(document.getElementById('c'), project, assets);
+    return { total: engine.duration, cues: engine.cues, holds: engine.holds, timeline: engine.timeline.scenes.map(({ id, type, start, end, dur }) => ({ id, type, start, end, dur })) };
+  };
+  // samples > 1: temporal supersampling (motion blur) across `shutter` of a frame interval
+  const acc = document.createElement('canvas');
+  acc.width = 1920; acc.height = 1080;
+  const actx = acc.getContext('2d');
+  window.__frame = (t, fmt = 'image/png', q = 0.95, samples = 1, shutter = 0.5, fps = 30) => {
+    const main = document.getElementById('c');
+    if (samples <= 1) {
+      const r = engine.render(t);
+      return { ...r, data: main.toDataURL(fmt, q) };
+    }
+    let report = null;
+    const mid = Math.floor(samples / 2);
+    for (let k = 0; k < samples; k++) {
+      const tk = Math.max(0, Math.min(engine.duration - 1e-4, t + ((k + 0.5) / samples - 0.5) * (shutter / fps)));
+      const r = engine.render(tk);
+      if (k === mid) report = r;
+      actx.globalAlpha = 1 / (k + 1); // running average
+      actx.drawImage(main, 0, 0);
+    }
+    actx.globalAlpha = 1;
+    return { ...report, data: acc.toDataURL(fmt, q) };
+  };
+  window.__posterLayers = async () => {
+    const kit = engine.poster.build(engine.project);
+    const toURL = async (c) => { const b = await c.convertToBlob({ type: 'image/png' }); return await new Promise((r) => { const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(b); }); };
+    const out = { flat: await toURL(kit.flat), warnings: kit.warnings };
+    for (const L of kit.layers) out[L.id] = await toURL(L.source);
+    return out;
+  };
+  window.__ready = true;
+</script>
+</body>
+</html>

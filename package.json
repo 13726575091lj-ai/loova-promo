@@ -1,0 +1,13 @@
+{
+  "name": "loova-promo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "preview": "node tools/preview-server.mjs",
+    "stills": "node tools/stills.mjs",
+    "render": "node tools/render.mjs",
+    "qc": "node tools/qc.mjs"
+  },
+  "dependencies": { "playwright": "1.56.0" }
+}

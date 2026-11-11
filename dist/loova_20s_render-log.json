@@ -1,0 +1,685 @@
+{
+  "project": "project.json",
+  "total": 20,
+  "fps": 30,
+  "frames": 600,
+  "timeline": [
+    {
+      "id": "intro",
+      "type": "intro",
+      "start": 0,
+      "end": 1.8,
+      "dur": 1.8
+    },
+    {
+      "id": "title",
+      "type": "title",
+      "start": 1.8,
+      "end": 4.8,
+      "dur": 3
+    },
+    {
+      "id": "slot",
+      "type": "slot",
+      "start": 4.8,
+      "end": 7.8,
+      "dur": 3
+    },
+    {
+      "id": "localize",
+      "type": "localize",
+      "start": 7.8,
+      "end": 14.2,
+      "dur": 6.4
+    },
+    {
+      "id": "layers",
+      "type": "layers",
+      "start": 14.2,
+      "end": 17.4,
+      "dur": 3.2
+    },
+    {
+      "id": "brand",
+      "type": "brand",
+      "start": 17.4,
+      "end": 20,
+      "dur": 2.6
+    }
+  ],
+  "cues": [
+    {
+      "t": 0,
+      "type": "section",
+      "pattern": "intro",
+      "len": 1.8,
+      "scene": "intro",
+      "local": 0
+    },
+    {
+      "t": 0.05,
+      "type": "riser",
+      "len": 1.75,
+      "gain": 0.55,
+      "scene": "intro",
+      "local": 0.05
+    },
+    {
+      "t": 1.3800000000000001,
+      "type": "suck",
+      "len": 0.42,
+      "gain": 0.7,
+      "scene": "intro",
+      "local": 1.3800000000000001
+    },
+    {
+      "t": 1.8,
+      "type": "impact",
+      "gain": 0.55,
+      "size": 0.6,
+      "scene": "title",
+      "local": 0
+    },
+    {
+      "t": 1.997142857142857,
+      "type": "whoosh",
+      "len": 0.3,
+      "gain": 0.5,
+      "pan": -0.3,
+      "scene": "title",
+      "local": 0.19714285714285712
+    },
+    {
+      "t": 2.297142857142857,
+      "type": "impact",
+      "gain": 0.9,
+      "size": 0.9,
+      "scene": "title",
+      "local": 0.4971428571428571
+    },
+    {
+      "t": 2.297142857142857,
+      "type": "section",
+      "pattern": "drop",
+      "len": 2.031428571428571,
+      "scene": "title",
+      "local": 0.4971428571428571
+    },
+    {
+      "t": 2.347142857142857,
+      "type": "whoosh",
+      "len": 0.3,
+      "gain": 0.5,
+      "pan": 0.3,
+      "scene": "title",
+      "local": 0.5471428571428572
+    },
+    {
+      "t": 2.571428571428571,
+      "type": "impact",
+      "gain": 1,
+      "size": 1,
+      "scene": "title",
+      "local": 0.7714285714285714
+    },
+    {
+      "t": 3.1314285714285717,
+      "type": "shimmer",
+      "len": 0.8,
+      "gain": 0.35,
+      "scene": "title",
+      "local": 1.3314285714285714
+    },
+    {
+      "t": 4.328571428571428,
+      "type": "sweep",
+      "len": 0.47142857142857153,
+      "gain": 0.75,
+      "scene": "title",
+      "local": 2.5285714285714285
+    },
+    {
+      "t": 4.328571428571428,
+      "type": "section",
+      "pattern": "fill",
+      "len": 0.47142857142857153,
+      "scene": "title",
+      "local": 2.5285714285714285
+    },
+    {
+      "t": 4.8,
+      "type": "section",
+      "pattern": "spin",
+      "len": 1.6500000000000001,
+      "scene": "slot",
+      "local": 0
+    },
+    {
+      "t": 4.854,
+      "type": "tick",
+      "gain": 0.35818181818181816,
+      "pan": 0,
+      "scene": "slot",
+      "local": 0.054000000000000034
+    },
+    {
+      "t": 4.9639999999999995,
+      "type": "tick",
+      "gain": 0.3748484848484848,
+      "pan": 0,
+      "scene": "slot",
+      "local": 0.16400000000000012
+    },
+    {
+      "t": 5.082,
+      "type": "tick",
+      "gain": 0.3927272727272727,
+      "pan": 0,
+      "scene": "slot",
+      "local": 0.2820000000000002
+    },
+    {
+      "t": 5.214,
+      "type": "tick",
+      "gain": 0.4127272727272727,
+      "pan": 0,
+      "scene": "slot",
+      "local": 0.4140000000000003
+    },
+    {
+      "t": 5.36,
+      "type": "tick",
+      "gain": 0.4348484848484849,
+      "pan": 0,
+      "scene": "slot",
+      "local": 0.5600000000000004
+    },
+    {
+      "t": 5.5280000000000005,
+      "type": "tick",
+      "gain": 0.4603030303030303,
+      "pan": 0,
+      "scene": "slot",
+      "local": 0.7280000000000005
+    },
+    {
+      "t": 5.736000000000001,
+      "type": "tick",
+      "gain": 0.49181818181818193,
+      "pan": 0,
+      "scene": "slot",
+      "local": 0.9360000000000007
+    },
+    {
+      "t": 6.032000000000001,
+      "type": "tick",
+      "gain": 0.5366666666666667,
+      "pan": 0,
+      "scene": "slot",
+      "local": 1.2320000000000009
+    },
+    {
+      "t": 6.45,
+      "type": "lock",
+      "gain": 0.9,
+      "scene": "slot",
+      "local": 1.6500000000000001
+    },
+    {
+      "t": 6.45,
+      "type": "impact",
+      "gain": 0.55,
+      "size": 0.5,
+      "scene": "slot",
+      "local": 1.6500000000000001
+    },
+    {
+      "t": 6.45,
+      "type": "section",
+      "pattern": "groove",
+      "len": 0.8357142857142856,
+      "scene": "slot",
+      "local": 1.6500000000000001
+    },
+    {
+      "t": 6.48,
+      "type": "ding",
+      "gain": 0.55,
+      "scene": "slot",
+      "local": 1.6800000000000002
+    },
+    {
+      "t": 6.65,
+      "type": "pop",
+      "gain": 0.5,
+      "scene": "slot",
+      "local": 1.85
+    },
+    {
+      "t": 7.285714285714286,
+      "type": "whoosh",
+      "len": 0.6142857142857142,
+      "gain": 0.6,
+      "pan": 0.4,
+      "scene": "slot",
+      "local": 2.4857142857142858
+    },
+    {
+      "t": 7.285714285714286,
+      "type": "section",
+      "pattern": "fill",
+      "len": 0.5142857142857142,
+      "scene": "slot",
+      "local": 2.4857142857142858
+    },
+    {
+      "t": 7.8,
+      "type": "section",
+      "pattern": "groove",
+      "len": 5.800000000000001,
+      "chord": 0,
+      "scene": "localize",
+      "local": 0
+    },
+    {
+      "t": 7.95,
+      "type": "swish",
+      "len": 0.5,
+      "gain": 0.35,
+      "pan": -0.6,
+      "scene": "localize",
+      "local": 0.15
+    },
+    {
+      "t": 8.946428571428571,
+      "type": "whoosh",
+      "len": 0.45,
+      "gain": 0.5,
+      "pan": 0.5,
+      "scene": "localize",
+      "local": 1.1464285714285718
+    },
+    {
+      "t": 9.146428571428572,
+      "type": "tick",
+      "gain": 0.6,
+      "pan": -0.4,
+      "scene": "localize",
+      "local": 1.3464285714285718
+    },
+    {
+      "t": 9.326428571428572,
+      "type": "pop",
+      "gain": 0.35,
+      "scene": "localize",
+      "local": 1.5264285714285717
+    },
+    {
+      "t": 9.346428571428572,
+      "type": "chord",
+      "chord": 1,
+      "scene": "localize",
+      "local": 1.5464285714285717
+    },
+    {
+      "t": 9.982142857142858,
+      "type": "whoosh",
+      "len": 0.45,
+      "gain": 0.5,
+      "pan": 0.5,
+      "scene": "localize",
+      "local": 2.1821428571428574
+    },
+    {
+      "t": 10.182142857142857,
+      "type": "tick",
+      "gain": 0.6,
+      "pan": -0.4,
+      "scene": "localize",
+      "local": 2.3821428571428576
+    },
+    {
+      "t": 10.362142857142857,
+      "type": "pop",
+      "gain": 0.35,
+      "scene": "localize",
+      "local": 2.5621428571428577
+    },
+    {
+      "t": 10.382142857142858,
+      "type": "chord",
+      "chord": 2,
+      "scene": "localize",
+      "local": 2.5821428571428577
+    },
+    {
+      "t": 11.017857142857142,
+      "type": "whoosh",
+      "len": 0.45,
+      "gain": 0.5,
+      "pan": 0.5,
+      "scene": "localize",
+      "local": 3.217857142857143
+    },
+    {
+      "t": 11.217857142857143,
+      "type": "tick",
+      "gain": 0.6,
+      "pan": -0.4,
+      "scene": "localize",
+      "local": 3.417857142857143
+    },
+    {
+      "t": 11.397857142857143,
+      "type": "pop",
+      "gain": 0.35,
+      "scene": "localize",
+      "local": 3.5978571428571433
+    },
+    {
+      "t": 11.417857142857143,
+      "type": "chord",
+      "chord": 3,
+      "scene": "localize",
+      "local": 3.6178571428571433
+    },
+    {
+      "t": 12.053571428571429,
+      "type": "whoosh",
+      "len": 0.45,
+      "gain": 0.5,
+      "pan": 0.5,
+      "scene": "localize",
+      "local": 4.253571428571429
+    },
+    {
+      "t": 12.25357142857143,
+      "type": "tick",
+      "gain": 0.6,
+      "pan": -0.4,
+      "scene": "localize",
+      "local": 4.453571428571429
+    },
+    {
+      "t": 12.43357142857143,
+      "type": "pop",
+      "gain": 0.6,
+      "scene": "localize",
+      "local": 4.63357142857143
+    },
+    {
+      "t": 12.45357142857143,
+      "type": "chord",
+      "chord": 4,
+      "scene": "localize",
+      "local": 4.653571428571429
+    },
+    {
+      "t": 13.600000000000001,
+      "type": "swish",
+      "len": 0.6,
+      "gain": 0.45,
+      "pan": 0,
+      "scene": "localize",
+      "local": 5.800000000000001
+    },
+    {
+      "t": 13.600000000000001,
+      "type": "section",
+      "pattern": "fill",
+      "len": 0.6,
+      "scene": "localize",
+      "local": 5.800000000000001
+    },
+    {
+      "t": 14.2,
+      "type": "section",
+      "pattern": "breakdown",
+      "len": 3.2,
+      "scene": "layers",
+      "local": 0
+    },
+    {
+      "t": 14.25,
+      "type": "subdrop",
+      "gain": 0.8,
+      "scene": "layers",
+      "local": 0.05
+    },
+    {
+      "t": 14.25,
+      "type": "swish",
+      "len": 0.9142857142857144,
+      "gain": 0.4,
+      "pan": -0.5,
+      "scene": "layers",
+      "local": 0.05
+    },
+    {
+      "t": 14.6,
+      "type": "glass",
+      "note": 0,
+      "gain": 0.32,
+      "scene": "layers",
+      "local": 0.4
+    },
+    {
+      "t": 14.66,
+      "type": "glass",
+      "note": 1,
+      "gain": 0.32,
+      "scene": "layers",
+      "local": 0.45999999999999996
+    },
+    {
+      "t": 14.719999999999999,
+      "type": "glass",
+      "note": 2,
+      "gain": 0.32,
+      "scene": "layers",
+      "local": 0.52
+    },
+    {
+      "t": 14.78,
+      "type": "glass",
+      "note": 3,
+      "gain": 0.32,
+      "scene": "layers",
+      "local": 0.58
+    },
+    {
+      "t": 14.84,
+      "type": "glass",
+      "note": 4,
+      "gain": 0.32,
+      "scene": "layers",
+      "local": 0.64
+    },
+    {
+      "t": 14.899999999999999,
+      "type": "glass",
+      "note": 5,
+      "gain": 0.32,
+      "scene": "layers",
+      "local": 0.7
+    },
+    {
+      "t": 16.622857142857143,
+      "type": "suck",
+      "len": 0.7771428571428571,
+      "gain": 0.5,
+      "scene": "layers",
+      "local": 2.422857142857143
+    },
+    {
+      "t": 17.4,
+      "type": "section",
+      "pattern": "pre",
+      "len": 0.6,
+      "scene": "brand",
+      "local": 0
+    },
+    {
+      "t": 17.4,
+      "type": "suck",
+      "len": 0.6,
+      "gain": 0.5,
+      "scene": "brand",
+      "local": 0
+    },
+    {
+      "t": 18,
+      "type": "impact",
+      "gain": 1,
+      "size": 1.2,
+      "scene": "brand",
+      "local": 0.6
+    },
+    {
+      "t": 18,
+      "type": "section",
+      "pattern": "finale",
+      "len": 2,
+      "scene": "brand",
+      "local": 0.6
+    },
+    {
+      "t": 18.099999999999998,
+      "type": "shimmer",
+      "len": 0.9,
+      "gain": 0.45,
+      "scene": "brand",
+      "local": 0.7
+    },
+    {
+      "t": 18.349999999999998,
+      "type": "pop",
+      "gain": 0.35,
+      "scene": "brand",
+      "local": 0.95
+    },
+    {
+      "t": 18.75,
+      "type": "sparkle",
+      "gain": 0.35,
+      "scene": "brand",
+      "local": 1.35
+    }
+  ],
+  "holds": [
+    {
+      "label": "intro.kicker",
+      "layer": "kicker",
+      "text": "A LOOVA ORIGINAL",
+      "start": 0.45,
+      "end": 1.4,
+      "scene": "intro"
+    },
+    {
+      "label": "title.brandRow",
+      "layer": "brandRow",
+      "text": "LOOVA",
+      "start": 2.25,
+      "end": 4.478571428571429,
+      "scene": "title"
+    },
+    {
+      "label": "title.line1",
+      "layer": "line1",
+      "text": "SEEDANCE",
+      "start": 2.297142857142857,
+      "end": 4.478571428571429,
+      "scene": "title"
+    },
+    {
+      "label": "title.line2",
+      "layer": "line2",
+      "text": "5.5",
+      "start": 2.571428571428571,
+      "end": 4.478571428571429,
+      "scene": "title"
+    },
+    {
+      "label": "slot.header",
+      "layer": "header",
+      "text": "IMAGE MODELS ON LOOVA",
+      "start": 5.2,
+      "end": 7.385714285714286,
+      "scene": "slot"
+    },
+    {
+      "label": "slot.final",
+      "layer": "reel",
+      "text": "SEEDREAM 5.5",
+      "start": 6.55,
+      "end": 7.435714285714285,
+      "scene": "slot"
+    },
+    {
+      "label": "localize.th",
+      "layer": "panel",
+      "text": "ภาษาไทย",
+      "start": 8.3,
+      "end": 8.946428571428571,
+      "scene": "localize"
+    },
+    {
+      "label": "localize.ja",
+      "layer": "panel",
+      "text": "日本語",
+      "start": 9.346428571428572,
+      "end": 9.982142857142858,
+      "scene": "localize"
+    },
+    {
+      "label": "localize.es",
+      "layer": "panel",
+      "text": "Español",
+      "start": 10.382142857142858,
+      "end": 11.017857142857142,
+      "scene": "localize"
+    },
+    {
+      "label": "localize.ko",
+      "layer": "panel",
+      "text": "한국어",
+      "start": 11.417857142857143,
+      "end": 12.053571428571429,
+      "scene": "localize"
+    },
+    {
+      "label": "localize.en",
+      "layer": "panel",
+      "text": "English",
+      "start": 12.45357142857143,
+      "end": 13.600000000000001,
+      "scene": "localize"
+    },
+    {
+      "label": "layers.caption",
+      "layer": "caption",
+      "text": "EVERY LAYER. EDITABLE.",
+      "start": 15.364285714285714,
+      "end": 16.52285714285714,
+      "scene": "layers"
+    },
+    {
+      "label": "brand.lockup",
+      "layer": "lockup",
+      "text": "LOOVA",
+      "start": 18.5,
+      "end": 20,
+      "scene": "brand"
+    },
+    {
+      "label": "brand.tagline",
+      "layer": "tagline",
+      "text": "SEEDANCE 5.5  ·  SEEDREAM 5.5",
+      "start": 18.7,
+      "end": 20,
+      "scene": "brand"
+    }
+  ],
+  "frameIssues": [],
+  "posterWarnings": []
+}
