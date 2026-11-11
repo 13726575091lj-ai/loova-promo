@@ -1,3 +1,31 @@
+# LOOVA — Seedream 5.5 launch film (v2, 10 s, runway open)
+
+**Latest master: `LOOVA_10s_v2.mp4`** (1920×1080, 30 fps, 10.00 s, H.264 + AAC, 8-sample motion blur).
+Smaller copy: `LOOVA_10s_v2_small.mp4`. QC, stems, render log and contact sheet: `dist/v2/`.
+The earlier cut (v1, `LOOVA_10s.mp4`) is kept unchanged for comparison.
+
+## v2 structure (`project.json`)
+
+| # | Scene | Time | What happens | Hand-off |
+|---|---|---|---|---|
+| 1 | `open` | 0.00–2.00 | Supplied runway clip (`2323232.mp4`, from 0.8 s: red-hair → blue-hair look). Camera pushes in; exposure drops under the type (no plate). Kinetic title after the 4 s "Content Factory" card: row 1 LOOVA icon + wordmark, row 2 **SEEDREAM** letters cascade down with motion trails and a landing squash, row 3 **5.5** rises from below in a flowing mint→cyan gradient, chrome shine sweep | Pink polka dots grow out of "5.5" until they cover the frame |
+| 2 | `slot` | 2.00–3.75 | Same dot grid shrinks back to soft pink polka dots on white; pink kinetic reel IMAGE 2.6 / SEEDREAM 5.0 PRO spins and locks on **SEEDREAM 5.5** + NEW badge | Lock frame grows into the first poster card; a white wipe clears the dots |
+| 3 | `localize` | 3.75–8.15 | White field, blue poster card fan. Left: flag + country, the language in its own script; market list shows only flags until each market is reached, the active one opens to its language. TH → JP → ES → KR → **US English** | English card glides to centre |
+| 4 | `layers` | 8.15–8.95 | English poster explodes into 6 depth layers with wireframes and labels, camera orbit | Recombines flat |
+| 5 | `brand` | 8.95–10.00 | Poster shrinks into the LOOVA icon, particle burst, wordmark wipe; ends on the logo | — |
+
+Built following the `higgsfield-motion` skills in this repo: footage as an image sequence, no
+opacity-only transitions (halftone growth, shape morph, wipe), entries with move + scale + blur,
+sub-frame motion blur, synthesized score with cues from the same keyframes, QA on the encoded file.
+
+Flags are drawn in code (`src/flags.js`). Footage frames: `assets/footage/runway/` (source in
+`assets/footage/runway_source.mp4`); `clipIn`, `playbackRate`, `darken` are editable in the `open` scene.
+
+v2 QC (`dist/v2/loova_10s_qc.md`): 0 unplanned motion spikes, 0 global flicker, 0 text overflow /
+clipping, 10/10 text holds readable, 0 clipped samples, A/V mux offset 0 ms, 21/21 SFX cues within one frame.
+
+---
+
 # LOOVA — Seedance 5.5 / Seedream 5.5 launch film
 
 Code-built motion graphics film, 1920×1080, 16:9, 30 fps, with a procedural soundtrack.
