@@ -38,7 +38,15 @@ export async function loadAssets(project, base = '') {
   const images = {};
   await Promise.all([...urls].map(async (u) => (images[u] = await loadImage(base + u))));
   const logo = await (await fetch(base + project.logo.paths)).json();
-  return { images, logo };
+  // footage plays as an image sequence (headless Chromium has no H.264)
+  let footage = null;
+  if (project.footage) {
+    const F = project.footage;
+    const pad = (n) => String(n).padStart(F.pad ?? 3, '0');
+    const frames = await Promise.all(Array.from({ length: F.count }, (_, i) => loadImage(`${base}${F.dir}/${pad(i + 1)}.jpg`)));
+    footage = { fps: F.fps, frames };
+  }
+  return { images, logo, footage };
 }
 
 export class Engine {

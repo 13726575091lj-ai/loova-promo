@@ -1,0 +1,433 @@
+{
+  "container": {
+    "width": 1920,
+    "height": 1080,
+    "duration": 10.0,
+    "fps": 30.0,
+    "audio": true,
+    "audioDesc": "aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 271 kb/s (default)"
+  },
+  "frames": 300,
+  "motion": {
+    "maxChange": 32.36,
+    "meanChange": 4.87,
+    "jumps": [
+      {
+        "frame": 56,
+        "t": 1.867,
+        "scene": "open",
+        "change": 24.84,
+        "local": 1.31,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 57,
+        "t": 1.9,
+        "scene": "open",
+        "change": 22.7,
+        "local": 1.86,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 142,
+        "t": 4.733,
+        "scene": "localize",
+        "change": 22.48,
+        "local": 0.25,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 143,
+        "t": 4.767,
+        "scene": "localize",
+        "change": 22.33,
+        "local": 0.25,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 164,
+        "t": 5.467,
+        "scene": "localize",
+        "change": 22.64,
+        "local": 0.35,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 165,
+        "t": 5.5,
+        "scene": "localize",
+        "change": 23.42,
+        "local": 0.35,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 189,
+        "t": 6.3,
+        "scene": "localize",
+        "change": 22.86,
+        "local": 0.59,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 190,
+        "t": 6.333,
+        "scene": "localize",
+        "change": 23.53,
+        "local": 0.59,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 191,
+        "t": 6.367,
+        "scene": "localize",
+        "change": 18.43,
+        "local": 0.6,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 211,
+        "t": 7.033,
+        "scene": "localize",
+        "change": 21.64,
+        "local": 1.0,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 212,
+        "t": 7.067,
+        "scene": "localize",
+        "change": 23.07,
+        "local": 1.0,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      },
+      {
+        "frame": 213,
+        "t": 7.1,
+        "scene": "localize",
+        "change": 18.27,
+        "local": 1.0,
+        "atSceneBoundary": false,
+        "designedWhip": true
+      }
+    ],
+    "unexpectedJumps": 0
+  },
+  "flicker": {
+    "global": [],
+    "blockFrames": [
+      {
+        "frame": 142,
+        "t": 4.733,
+        "scene": "localize",
+        "blocks": 1,
+        "where": [
+          [
+            11,
+            1
+          ]
+        ]
+      }
+    ],
+    "blockFrameCount": 1
+  },
+  "text": {
+    "overflowFrames": 0,
+    "clippedFrames": 0,
+    "examples": [],
+    "holds": [
+      {
+        "label": "open.brandRow",
+        "layer": "brandRow",
+        "text": "LOOVA",
+        "start": 0.8,
+        "end": 1.7799999999999998,
+        "scene": "open",
+        "duration": 0.98,
+        "required": 0.575,
+        "ok": true
+      },
+      {
+        "label": "open.line1",
+        "layer": "line1",
+        "text": "SEEDREAM",
+        "start": 1.004,
+        "end": 1.7799999999999998,
+        "scene": "open",
+        "duration": 0.776,
+        "required": 0.65,
+        "ok": true
+      },
+      {
+        "label": "open.line2",
+        "layer": "line2",
+        "text": "5.5",
+        "start": 1.08,
+        "end": 1.7799999999999998,
+        "scene": "open",
+        "duration": 0.7,
+        "required": 0.525,
+        "ok": true
+      },
+      {
+        "label": "slot.final",
+        "layer": "reel",
+        "text": "SEEDREAM 5.5",
+        "start": 2.7125,
+        "end": 3.48,
+        "scene": "slot",
+        "duration": 0.768,
+        "required": 0.75,
+        "ok": true
+      },
+      {
+        "label": "localize.th",
+        "layer": "panel",
+        "text": "ภาษาไทย",
+        "start": 4,
+        "end": 4.6288888888888895,
+        "scene": "localize",
+        "duration": 0.629,
+        "required": 0.625,
+        "ok": true
+      },
+      {
+        "label": "localize.ja",
+        "layer": "panel",
+        "text": "日本語",
+        "start": 4.838888888888889,
+        "end": 5.367777777777778,
+        "scene": "localize",
+        "duration": 0.529,
+        "required": 0.525,
+        "ok": true
+      },
+      {
+        "label": "localize.es",
+        "layer": "panel",
+        "text": "Español",
+        "start": 5.5777777777777775,
+        "end": 6.206666666666667,
+        "scene": "localize",
+        "duration": 0.629,
+        "required": 0.625,
+        "ok": true
+      },
+      {
+        "label": "localize.ko",
+        "layer": "panel",
+        "text": "한국어",
+        "start": 6.416666666666667,
+        "end": 6.945555555555556,
+        "scene": "localize",
+        "duration": 0.529,
+        "required": 0.525,
+        "ok": true
+      },
+      {
+        "label": "localize.en",
+        "layer": "panel",
+        "text": "English",
+        "start": 7.155555555555556,
+        "end": 7.800000000000001,
+        "scene": "localize",
+        "duration": 0.644,
+        "required": 0.625,
+        "ok": true
+      },
+      {
+        "label": "brand.lockup",
+        "layer": "lockup",
+        "text": "LOOVA",
+        "start": 9.412,
+        "end": 10.000000000000002,
+        "scene": "brand",
+        "duration": 0.588,
+        "required": 0.575,
+        "ok": true
+      }
+    ],
+    "posterWarnings": []
+  },
+  "audio": {
+    "peak": 0.9182,
+    "peakDb": -0.74,
+    "rmsDb": -14.46,
+    "clippedSamples": 0,
+    "sync": {
+      "cues": 9,
+      "medianAbsMs": 2.0,
+      "p95AbsMs": 37.599999999999994,
+      "maxAbsMs": 40.0,
+      "within20ms": 5,
+      "maskedCues": [
+        {
+          "t": 2.812,
+          "type": "pop",
+          "scene": "slot",
+          "offsetMs": 0.0,
+          "strengthDb": 3.3
+        },
+        {
+          "t": 4.734,
+          "type": "tick",
+          "scene": "localize",
+          "offsetMs": 2.0,
+          "strengthDb": 4.1
+        },
+        {
+          "t": 4.819,
+          "type": "pop",
+          "scene": "localize",
+          "offsetMs": -8.0,
+          "strengthDb": 1.8
+        },
+        {
+          "t": 5.473,
+          "type": "tick",
+          "scene": "localize",
+          "offsetMs": 28.0,
+          "strengthDb": 3.2
+        },
+        {
+          "t": 5.558,
+          "type": "pop",
+          "scene": "localize",
+          "offsetMs": -26.0,
+          "strengthDb": 1.7
+        },
+        {
+          "t": 6.312,
+          "type": "tick",
+          "scene": "localize",
+          "offsetMs": 2.0,
+          "strengthDb": 3.5
+        },
+        {
+          "t": 6.397,
+          "type": "pop",
+          "scene": "localize",
+          "offsetMs": -18.0,
+          "strengthDb": 1.8
+        },
+        {
+          "t": 7.051,
+          "type": "tick",
+          "scene": "localize",
+          "offsetMs": 0.0,
+          "strengthDb": 2.9
+        },
+        {
+          "t": 7.136,
+          "type": "pop",
+          "scene": "localize",
+          "offsetMs": -8.0,
+          "strengthDb": 2.1
+        },
+        {
+          "t": 8.2,
+          "type": "subdrop",
+          "scene": "layers",
+          "offsetMs": 10.0,
+          "strengthDb": 5.5
+        },
+        {
+          "t": 9.202,
+          "type": "impact",
+          "scene": "brand",
+          "offsetMs": 30.0,
+          "strengthDb": 3.2
+        },
+        {
+          "t": 9.349,
+          "type": "pop",
+          "scene": "brand",
+          "offsetMs": 0.0,
+          "strengthDb": 4.0
+        }
+      ],
+      "muxOffsetMs": 0.0,
+      "stem": {
+        "cues": 21,
+        "maxAbsMs": 16.0,
+        "within10ms": 19,
+        "withinFrame": 21
+      }
+    },
+    "cueSync": [
+      {
+        "t": 0.69,
+        "type": "impact",
+        "scene": "open",
+        "offsetMs": 34.0,
+        "strengthDb": 11.0
+      },
+      {
+        "t": 0.754,
+        "type": "tick",
+        "scene": "open",
+        "offsetMs": 34.0,
+        "strengthDb": 14.6
+      },
+      {
+        "t": 0.818,
+        "type": "tick",
+        "scene": "open",
+        "offsetMs": 2.0,
+        "strengthDb": 17.1
+      },
+      {
+        "t": 0.882,
+        "type": "tick",
+        "scene": "open",
+        "offsetMs": 32.0,
+        "strengthDb": 18.3
+      },
+      {
+        "t": 0.98,
+        "type": "impact",
+        "scene": "open",
+        "offsetMs": -40.0,
+        "strengthDb": 14.7
+      },
+      {
+        "t": 2.054,
+        "type": "tick",
+        "scene": "slot",
+        "offsetMs": 0.0,
+        "strengthDb": 15.9
+      },
+      {
+        "t": 2.18,
+        "type": "tick",
+        "scene": "slot",
+        "offsetMs": 0.0,
+        "strengthDb": 27.9
+      },
+      {
+        "t": 2.364,
+        "type": "tick",
+        "scene": "slot",
+        "offsetMs": 0.0,
+        "strengthDb": 34.2
+      },
+      {
+        "t": 2.612,
+        "type": "lock",
+        "scene": "slot",
+        "offsetMs": 0.0,
+        "strengthDb": 12.9
+      }
+    ]
+  }
+}

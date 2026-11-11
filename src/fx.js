@@ -53,11 +53,11 @@ export function glowSprite(hex, size = 64, hard = 0.35) {
  * Dots fade in at the far plane and out near the lens, so the wrap never pops.
  */
 export function dotFloor(ctx, t, o = {}) {
-  const { color = '#ffffff', alpha = 0.5, speed = 600, spacing = 110, y = 420, cols = 34, rows = 46, size = 5, horizonFade = 0.9, cam = makeCam({ z: 0 }), ceiling = false } = o;
+  const { color = '#ffffff', alpha = 0.5, speed = 600, spacing = 110, y = 420, cols = 34, rows = 46, size = 5, horizonFade = 0.9, cam = makeCam({ z: 0 }), ceiling = false, composite = 'lighter' } = o;
   const spr = glowSprite(color, 32, 0.5);
   const off = (t * speed) % spacing;
   ctx.save();
-  ctx.globalCompositeOperation = 'lighter';
+  ctx.globalCompositeOperation = composite;
   const planes = ceiling ? [y, -y] : [y];
   for (const py of planes) {
     for (let r = 0; r < rows; r++) {
@@ -364,3 +364,32 @@ export function vignette(ctx, strength = 0.55, color = '#000') {
   ctx.fillRect(0, 0, W, H);
   ctx.restore();
 }
+
+// ------------------------------------------------------------------ polka-dot field
+/**
+ * Staggered polka-dot grid. rOf(x, y, row, col) returns each dot's radius, so the same
+ * grid serves as a steady pattern, a halftone wipe (dots grow to cover the frame) and the
+ * reverse (dots shrink back to the pattern). Offsets move the grid without changing geometry.
+ */
+export function polkaField(ctx, { spacing = 64, color = '#FF3D9A', rOf, offX = 0, offY = 0, alpha = 1 }) {
+  const ox = ((offX % spacing) + spacing) % spacing, oy = ((offY % (spacing * 2)) + spacing * 2) % (spacing * 2);
+  ctx.save();
+  ctx.globalAlpha *= alpha;
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  for (let row = -2; row * spacing < H + spacing * 2; row++) {
+    const y = row * spacing + oy - spacing;
+    const shift = (row & 1) * (spacing / 2);
+    for (let col = -2; col * spacing < W + spacing * 2; col++) {
+      const x = col * spacing + ox + shift - spacing;
+      const r = rOf(x, y, row, col);
+      if (r <= 0.15) continue;
+      ctx.moveTo(x + r, y);
+      ctx.arc(x, y, r, 0, Math.PI * 2);
+    }
+  }
+  ctx.fill();
+  ctx.restore();
+}
+/** dot radius that fully covers a staggered grid of this spacing */
+export const polkaCover = (spacing) => spacing * 0.76;

@@ -45,7 +45,7 @@ export default {
     const dots = layerCtl(scene, 'dots');
     if (dots.visible) {
       const cam0 = makeCam({ z: 0 });
-      dotFloor(ctx, S.gT, { cam: cam0, color: pal.blueGlow, alpha: 0.42 * fromNavy * dots.opacity, speed: 260, y: 430, spacing: 120 });
+      dotFloor(ctx, S.gT, { cam: cam0, color: pal.blue, alpha: 0.32 * fromNavy * dots.opacity, speed: 260, y: 430, spacing: 120, composite: 'source-over' });
       dotFloor(ctx, S.gT, { cam: cam0, color: '#9aa0a8', alpha: 0.22 * (1 - fromNavy) * (1 - r) * dots.opacity, speed: 260, y: 430, spacing: 120 });
     }
     if (r > 0) {
@@ -140,7 +140,6 @@ export default {
       ctx.restore();
       S.report('layers.caption', { x: bx, y: by, w: bw, h: bh }, ca, T.fits);
     });
-    vignette(ctx, 0.45 * fromNavy, pal.navy);
     vignette(ctx, 0.4 * (1 - fromNavy));
   },
 

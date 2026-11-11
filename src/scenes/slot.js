@@ -1,8 +1,8 @@
-// Scene 3 — Pink slot reel (reference: 9s pink kinetic type).
+// Scene 2 — Pink slot reel on a white polka-dot field (reference: 9 s pink kinetic type).
 // Model names spin on a 3D cylinder, decelerate and lock on the final model.
 // Exit: the lock frame morphs into the first localized poster card (shape match).
-import { seg, ease, lerp, clamp, rgba, layoutText, layerCtl, withLayer, roundRectPath } from '../util.js';
-import { W, H, dotWave, drawLines, smear, drawIcon, vignette } from '../fx.js';
+import { seg, ease, lerp, clamp, rgba, mixHex, layoutText, layerCtl, withLayer, roundRectPath } from '../util.js';
+import { W, H, drawLines, smear, drawIcon, polkaField, polkaCover } from '../fx.js';
 import { frontCardRect, drawLocalizeBg, firstMarket } from './shared.js';
 
 const CY = 580;
@@ -34,19 +34,36 @@ export default {
     const s = reelPos(t, land, N);
     const vel = (reelPos(t + 1 / 60, land, N) - reelPos(t - 1 / 60, land, N)) * 30; // rows / s
 
-    // pink field
-    const bg = ctx.createLinearGradient(0, 0, 0, H);
-    bg.addColorStop(0, pal.pink);
-    bg.addColorStop(1, pal.pinkDeep);
-    ctx.fillStyle = bg;
-    ctx.fillRect(0, 0, W, H);
-    const hl = ctx.createRadialGradient(W / 2, CY, 0, W / 2, CY, 820);
-    hl.addColorStop(0, rgba(pal.pinkHot, 0.55));
-    hl.addColorStop(1, rgba(pal.pinkHot, 0));
-    ctx.fillStyle = hl;
+    // white field + pink polka dots. Starts fully covered (hand-off from the opening's
+    // halftone wipe, same grid) and shrinks back to the dot pattern from the centre out.
+    ctx.fillStyle = pal.paper;
     ctx.fillRect(0, 0, W, H);
     const dots = layerCtl(scene, 'dots');
-    if (dots.visible) dotWave(ctx, S.gT, { color: '#ffffff', alpha: 0.2 * dots.opacity, spacing: 38, size: 3.4, speed: 0.9, drift: [0, -30 - vel * 6] });
+    const sp = prm.dotSpacing ?? 64, r0 = prm.dotRadius ?? 9;
+    const cover = polkaCover(sp);
+    const shrink = seg(t, 0, prm.revealLen ?? 0.32);
+    const travel = reelPos(t, land, N) * 46; // dots drift with the reel so the spin reads in the background too
+    if (dots.visible) {
+      polkaField(ctx, {
+        spacing: sp, color: mixHex(pal.paper, pal.pink, prm.dotStrength ?? 0.3), alpha: dots.opacity, offX: 0, offY: -travel,
+        rOf: (x, y) => {
+          const d = Math.hypot(x - W / 2, y - CY) / 1100;
+          const k = ease.inOutQuad(clamp(shrink * 1.45 - d * 0.45));
+          const pulse = 1 + 0.08 * Math.sin(t * 6 - d * 8);
+          return lerp(cover, r0 * pulse, k);
+        },
+      });
+      // the covering colour is full pink and fades to the soft dot tint as it shrinks
+      if (shrink < 1) {
+        polkaField(ctx, {
+          spacing: sp, color: pal.pink, alpha: dots.opacity * (1 - ease.inOutQuad(shrink)), offY: -travel,
+          rOf: (x, y) => {
+            const d = Math.hypot(x - W / 2, y - CY) / 1100;
+            return lerp(cover, r0, ease.inOutQuad(clamp(shrink * 1.45 - d * 0.45)));
+          },
+        });
+      }
+    }
 
     const out = 1 - seg(kx, 0, 0.35); // type fades as the frame morphs
 
@@ -58,8 +75,8 @@ export default {
       const x0 = W / 2 - total / 2;
       ctx.save();
       ctx.globalAlpha *= a;
-      drawIcon(ctx, x0, 170 - iconS / 2 - 10, iconS, P, assets.logo, { fill: '#ffffff', boltColor: pal.pink });
-      ctx.fillStyle = '#ffffff';
+      drawIcon(ctx, x0, 170 - iconS / 2 - 10, iconS, P, assets.logo);
+      ctx.fillStyle = pal.pinkDeep;
       drawLines(ctx, L, x0 + iconS + gap, 170, 'left');
       ctx.restore();
       S.report('slot.header', { x: x0, y: 170 - L.capH, w: total, h: L.capH }, a, L.fits);
@@ -94,15 +111,21 @@ export default {
         smear(ctx, blur > 3 ? Math.min(14, 4 + Math.ceil(blur / 18)) : 1, 0, blur, () => {
           // pink echo outline (kinetic stack)
           ctx.lineWidth = 3;
-          ctx.strokeStyle = rgba('#ffffff', 0.85 * (1 - focus) + 0.25);
+          ctx.strokeStyle = rgba(pal.pink, 0.75 * (1 - focus) + 0.25);
           drawLines(ctx, L, W / 2, baseY, 'center', true);
           if (focus > 0) {
             ctx.save();
             ctx.globalAlpha *= focus;
-            ctx.shadowColor = rgba(pal.pinkDeep, 0.6);
-            ctx.shadowBlur = 30;
-            ctx.shadowOffsetY = 10;
-            ctx.fillStyle = '#ffffff';
+            // offset hot-pink shadow copy (print-misregistration look), then the solid pink face
+            ctx.fillStyle = rgba(pal.pinkHot, 0.85);
+            drawLines(ctx, L, W / 2 + 7, baseY + 7, 'center');
+            ctx.shadowColor = rgba(pal.pinkDeep, 0.35);
+            ctx.shadowBlur = 26;
+            ctx.shadowOffsetY = 12;
+            const g = ctx.createLinearGradient(0, baseY - L.capH, 0, baseY);
+            g.addColorStop(0, pal.pink);
+            g.addColorStop(1, pal.pinkDeep);
+            ctx.fillStyle = g;
             drawLines(ctx, L, W / 2, baseY, 'center');
             ctx.restore();
           }
@@ -111,7 +134,7 @@ export default {
       }
       // centre guide lines (slot window)
       const gA = 0.5 * out * (1 - landed);
-      ctx.fillStyle = rgba('#ffffff', gA);
+      ctx.fillStyle = rgba(pal.pink, gA);
       ctx.fillRect(W / 2 - 860, CY - 100, 1720, 2);
       ctx.fillRect(W / 2 - 860, CY + 98, 1720, 2);
       S.report('slot.final', { x: W / 2 - finalL.width / 2, y: CY - finalL.capH / 2, w: finalL.width, h: finalL.capH }, landed * out, finalL.fits);
@@ -147,8 +170,8 @@ export default {
           drawLocalizeBg(ctx, P, 1);
           ctx.restore();
           const rg = ctx.createRadialGradient(cx, cy, Math.max(0, wr - edge / 2), cx, cy, wr + edge / 2);
-          rg.addColorStop(0, rgba(pal.navy, 1));
-          rg.addColorStop(1, rgba(pal.navy, 0));
+          rg.addColorStop(0, rgba(pal.paper, 1));
+          rg.addColorStop(1, rgba(pal.paper, 0));
           ctx.save();
           ctx.beginPath();
           ctx.arc(cx, cy, wr + edge / 2, 0, Math.PI * 2);
@@ -160,7 +183,7 @@ export default {
         ctx.save();
         roundRectPath(ctx, R.x, R.y, R.w, R.h, R.r);
         ctx.clip();
-        ctx.fillStyle = rgba(pal.navy, seg(kx, 0, 0.3));
+        ctx.fillStyle = rgba(pal.paper, seg(kx, 0, 0.3));
         ctx.fillRect(R.x, R.y, R.w, R.h);
         const src = S.poster.source(P, firstMarket(P)).source;
         if (src) {
@@ -173,7 +196,7 @@ export default {
         const per = 2 * (R.w + R.h);
         ctx.save();
         ctx.lineWidth = lerp(5, 2, kx);
-        ctx.strokeStyle = rgba('#ffffff', 1 - seg(kx, 0.6, 1));
+        ctx.strokeStyle = rgba(pal.pink, 1 - seg(kx, 0.6, 1));
         ctx.setLineDash([per * draw, per]);
         ctx.lineDashOffset = -per * 0.12;
         roundRectPath(ctx, R.x, R.y, R.w, R.h, R.r);
@@ -191,9 +214,9 @@ export default {
             ctx.scale(bk, bk);
             ctx.rotate(-0.06);
             roundRectPath(ctx, -bw / 2, -bh / 2, bw, bh, bh / 2);
-            ctx.fillStyle = '#ffffff';
+            ctx.fillStyle = pal.pink;
             ctx.fill();
-            ctx.fillStyle = pal.pinkDeep;
+            ctx.fillStyle = '#ffffff';
             drawLines(ctx, BL, 0, BL.capH / 2, 'center');
             ctx.restore();
           }
@@ -201,7 +224,6 @@ export default {
       }
       ctx.restore();
     }
-    vignette(ctx, 0.35 * (1 - kx), pal.pinkDeep);
   },
 
   cues(scene, P, dur) {

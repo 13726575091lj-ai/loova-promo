@@ -9,16 +9,17 @@ export const CAM_D = 1600;
 export const frontCardRect = () => ({ x: W / 2 + FRONT_X - CARD.w / 2, y: H / 2 - CARD.h / 2, w: CARD.w, h: CARD.h, r: CARD.r });
 export const centerCardRect = () => ({ x: W / 2 - CARD.w / 2, y: H / 2 - CARD.h / 2, w: CARD.w, h: CARD.h, r: CARD.r });
 
-/** Localize background (navy + blue glow behind the front card); also used by the slot exit. */
+/** Localize background (white + soft blue light behind the front card); also used by the slot exit. */
 export function drawLocalizeBg(ctx, P, alpha = 1) {
   if (alpha <= 0) return;
   ctx.save();
   ctx.globalAlpha = alpha;
-  ctx.fillStyle = P.palette.navy;
+  ctx.fillStyle = P.palette.paper;
   ctx.fillRect(0, 0, W, H);
+  // soft blue light pool behind the front card
   const g = ctx.createRadialGradient(W / 2 + FRONT_X, H / 2, 0, W / 2 + FRONT_X, H / 2, 900);
-  g.addColorStop(0, hexA(P.palette.blueGlow, 0.32));
-  g.addColorStop(1, hexA(P.palette.navy, 0));
+  g.addColorStop(0, hexA(P.palette.blueGlow, 0.16));
+  g.addColorStop(1, hexA(P.palette.blueGlow, 0));
   ctx.fillStyle = g;
   ctx.fillRect(0, 0, W, H);
   ctx.restore();
