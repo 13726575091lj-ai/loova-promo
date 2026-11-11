@@ -27,17 +27,22 @@ const loadImage = (src) =>
   });
 
 export async function loadAssets(project, base = '') {
+  // a project may bring its own fonts / images (e.g. the portfolio film); LOOVA defaults otherwise
   await Promise.all(
-    Object.entries(FONT_FILES).map(async ([name, url]) => {
+    Object.entries(project.fontFiles || FONT_FILES).map(async ([name, url]) => {
       const ff = new FontFace(name, `url(${base}${url})`, { weight: '100 900' });
       await ff.load();
       document.fonts.add(ff);
     })
   );
-  const urls = new Set([...Object.values(project.poster.images), project.poster.en.background, project.poster.en.crowd, project.poster.en.subject, ...(project.poster.clean ? [project.poster.clean] : [])]);
+  const PP = project.poster;
+  const urls = new Set([
+    ...(PP ? [...Object.values(PP.images), PP.en.background, PP.en.crowd, PP.en.subject, ...(PP.clean ? [PP.clean] : [])] : []),
+    ...Object.values(project.images || {}),
+  ]);
   const images = {};
   await Promise.all([...urls].map(async (u) => (images[u] = await loadImage(base + u))));
-  const logo = await (await fetch(base + project.logo.paths)).json();
+  const logo = project.logo ? await (await fetch(base + project.logo.paths)).json() : null;
   // footage plays as an image sequence (headless Chromium has no H.264)
   let footage = null;
   if (project.footage) {

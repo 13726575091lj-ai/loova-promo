@@ -13,10 +13,11 @@ import pyJianYingDraft as draft
 from pyJianYingDraft import Timerange, TrackSpec, TrackType
 
 base, proj_file, out_root = sys.argv[1], sys.argv[2], sys.argv[3]
-DRAFT = "LOOVA_v4"
-TARGET = "C:/LOOVA_jianying/素材"
+import os as _o
+DRAFT = _o.environ.get("DRAFT", "LOOVA_v4")
+TARGET = _o.environ.get("TARGET", "C:/LOOVA_jianying/素材")
 FFMPEG = os.environ["FFMPEG"]
-NAMES = {"open": "01_开场标题", "slot": "02_粉色滚轮", "drag": "03_拖动模特", "flags": "04_国旗投放", "layers": "05_分层展示", "brand": "06_品牌收尾"}
+NAMES = {"open": "01_开场标题", "slot": "02_粉色滚轮", "drag": "03_拖动模特", "flags": "04_国旗投放", "layers": "05_分层展示", "brand": "06_品牌收尾", "intro": "01_B2开场", "statement": "02_宣言", "work1": "03_CANDY_MUTINY", "work2": "04_ASHBOUND", "work3": "05_MY_BLOCK", "work4": "06_MOMS_HOME", "grid": "07_作品墙", "end": "08_收尾"}
 
 P = json.load(open(proj_file))
 fps = P["meta"]["fps"]
@@ -44,7 +45,7 @@ for i, (sid, _, _) in enumerate(scenes):
     clips.append((name, f0, f1))
 for stem, cn in (("music", "配乐_music.wav"), ("sfx", "音效_sfx.wav"), ("mix", "混音_mix.wav")):
     shutil.copy(f"{base}_stems/{stem}.wav", os.path.join(mat, cn))
-shutil.copy(base + ".mp4", os.path.join(mat, "成片_LOOVA_12s_v4.mp4"))
+shutil.copy(base + ".mp4", os.path.join(mat, "成片.mp4"))
 
 us = lambda f: round(f * 1_000_000 / fps)
 folder = draft.DraftFolder(out_root)

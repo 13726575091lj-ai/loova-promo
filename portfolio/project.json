@@ -1,0 +1,177 @@
+{
+  "meta": {
+    "title": "B2 — portfolio film (20 s)",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "safeMargin": 0.04
+  },
+  "palette": {
+    "blue": "#3154E8",
+    "ink": "#2345CC",
+    "paper": "#F0EEDF",
+    "orange": "#ED662E",
+    "dark": "#18222A",
+    "bg": "#3154E8"
+  },
+  "fonts": {
+    "round": "Delius",
+    "hand": "Caveat",
+    "mono": "DM Mono"
+  },
+  "fontFiles": {
+    "Delius": "portfolio/assets/fonts/delius.ttf",
+    "Caveat": "portfolio/assets/fonts/caveat.ttf",
+    "DM Mono": "portfolio/assets/fonts/dm-mono.ttf"
+  },
+  "images": {
+    "candy-mutiny": "portfolio/assets/works/candy-mutiny_full.jpg",
+    "ashbound": "portfolio/assets/works/ashbound_full.jpg",
+    "my-block": "portfolio/assets/works/my-block_full.jpg",
+    "moms-home": "portfolio/assets/works/moms-home_full.jpg"
+  },
+  "scenes": [
+    {
+      "id": "intro",
+      "type": "pf_intro",
+      "duration": 2.3,
+      "params": {},
+      "enabled": true
+    },
+    {
+      "id": "statement",
+      "type": "pf_statement",
+      "duration": 2.7,
+      "params": {
+        "chip": "THE WORLD OF B2",
+        "line1": "A LITTLE STRANGE.",
+        "line2": "A LOT OF IMAGINATION.",
+        "hand": "Welcome to my world.",
+        "next": "candy-mutiny"
+      },
+      "enabled": true
+    },
+    {
+      "id": "work1",
+      "type": "pf_work",
+      "duration": 2.8,
+      "params": {
+        "image": "candy-mutiny",
+        "title": "CANDY MUTINY",
+        "category": "ANIMATION MUSIC VIDEO",
+        "index": "01 / 04",
+        "doodle": "note",
+        "labelPos": "bl",
+        "dir": 1,
+        "music": "drop",
+        "enter": "card",
+        "exit": "bands",
+        "shade": 0.62
+      },
+      "enabled": true
+    },
+    {
+      "id": "work2",
+      "type": "pf_work",
+      "duration": 2.8,
+      "params": {
+        "image": "ashbound",
+        "title": "ASHBOUND",
+        "category": "ANIMATION",
+        "index": "02 / 04",
+        "doodle": "ghost",
+        "labelPos": "tl",
+        "dir": -1,
+        "music": "groove",
+        "enter": "bands",
+        "exit": "bands",
+        "shade": 0.62
+      },
+      "enabled": true
+    },
+    {
+      "id": "work3",
+      "type": "pf_work",
+      "duration": 2.8,
+      "params": {
+        "image": "my-block",
+        "title": "MY BLOCK",
+        "category": "ANIMATION",
+        "index": "03 / 04",
+        "doodle": "clapper",
+        "labelPos": "bl",
+        "dir": 1,
+        "music": "drop",
+        "enter": "bands",
+        "exit": "bands",
+        "shade": 0.62
+      },
+      "enabled": true
+    },
+    {
+      "id": "work4",
+      "type": "pf_work",
+      "duration": 2.8,
+      "params": {
+        "image": "moms-home",
+        "title": "MOM’S HOME",
+        "category": "LIVE ACTION",
+        "index": "04 / 04",
+        "doodle": "clapper",
+        "labelPos": "bl",
+        "dir": -1,
+        "music": "groove",
+        "enter": "bands",
+        "exit": "grid",
+        "shade": 0.62
+      },
+      "enabled": true
+    },
+    {
+      "id": "grid",
+      "type": "pf_grid",
+      "duration": 1.9,
+      "params": {
+        "heading": "SELECTED WORLDS.",
+        "note": "A few places I’ve been.",
+        "works": [
+          "candy-mutiny",
+          "ashbound",
+          "my-block",
+          "moms-home"
+        ],
+        "doodles": [
+          "note",
+          "ghost",
+          "clapper",
+          "clapper"
+        ],
+        "lastDir": -1
+      },
+      "enabled": true
+    },
+    {
+      "id": "end",
+      "type": "pf_end",
+      "duration": 1.9,
+      "params": {
+        "stay": "STAY",
+        "curious": "curious.",
+        "footL": "© 2026 B2 · FILMS & MOVING IMAGES",
+        "footR": "ANIMATION / MUSIC VIDEO / LIVE ACTION"
+      },
+      "enabled": true
+    }
+  ],
+  "audio": {
+    "sampleRate": 48000,
+    "bpm": 120,
+    "root": "A",
+    "musicGain": 0.75,
+    "sfxGain": 0.9,
+    "duck": 0.45,
+    "reverb": 0.22,
+    "peakDb": -1.0,
+    "tailFade": 0.25
+  }
+}
